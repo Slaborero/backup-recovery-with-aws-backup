@@ -2,8 +2,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - env 
-      - apt-get -y update
+      # - env 
+      # - apt-get -y update
       - gem install cfn-nag      
   build:
     commands:
