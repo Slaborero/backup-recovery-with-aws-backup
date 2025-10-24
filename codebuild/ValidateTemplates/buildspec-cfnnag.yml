@@ -4,6 +4,7 @@ phases:
     commands:
       # - env 
       # - apt-get -y update
+      - gem install multi_json -v 1.15.0
       - gem install cfn-nag      
   build:
     commands:
