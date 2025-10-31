@@ -145,7 +145,7 @@ Resources:
       RestoreTestingPlanName: aws_backup_organization_restore_test_plan
       ScheduleExpression: !Ref RestoreTestSchedule
       ScheduleExpressionTimezone: UTC
-      ScheduleStatus: ACTIVE
+      # ScheduleStatus: ACTIVE
       StartWindowHours: !Ref StartWindowHours
       Tags:
         - Key: Application
