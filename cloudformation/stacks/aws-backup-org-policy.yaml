@@ -215,7 +215,8 @@ Resources:
                         "@@assign": !Ref pTagValue
                   copy_actions:
                     # Currently this must be hardcoded since [AWS Backup Policy syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup_syntax.html#backup-policy-syntax-reference) requires the name of this key to be the same as the target.
-                    <Replace with value from pCentralBackupVaultArn>:
+                    # <Replace with value from pCentralBackupVaultArn>:
+                    arn:aws:backup:us-east-1:129654119448:backup-vault:AWSBackupSolutionCentralVault:
                       target_backup_vault_arn:
                         "@@assign": !Ref pCentralBackupVaultArn
                       lifecycle:
