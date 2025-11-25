@@ -1363,27 +1363,28 @@ Resources:
             RunOrder: 1
         - !Ref "AWS::NoValue"
 
-      - Name: DeployDemoResources
-        Actions:
-        - InputArtifacts:
-          - Name: SourceArtifacts
-          Name: Deploy_DemoResources
-          ActionTypeId:
-            Category: Deploy
-            Owner: AWS
-            Version: '1'
-            Provider: CloudFormation
-          Configuration:
-            ActionMode: REPLACE_ON_FAILURE
-            StackName: stackset-aws-backup-demo-resources
-            RoleArn: !GetAtt CloudFormationRole.Arn
-            Capabilities: CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND
-            TemplatePath: SourceArtifacts::cloudformation/stacksets/stackset-aws-backup-demo-resources.yaml
-            ParameterOverrides: |
-              {
-                "CommitId": "#{SourceVariables.CommitId}"
-              }
-          RunOrder: 1
+      # COMENTADO: Stage de Demo Resources para evitar desplegar recursos de prueba en todas las cuentas
+      # - Name: DeployDemoResources
+      #   Actions:
+      #   - InputArtifacts:
+      #     - Name: SourceArtifacts
+      #     Name: Deploy_DemoResources
+      #     ActionTypeId:
+      #       Category: Deploy
+      #       Owner: AWS
+      #       Version: '1'
+      #       Provider: CloudFormation
+      #     Configuration:
+      #       ActionMode: REPLACE_ON_FAILURE
+      #       StackName: stackset-aws-backup-demo-resources
+      #       RoleArn: !GetAtt CloudFormationRole.Arn
+      #       Capabilities: CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND
+      #       TemplatePath: SourceArtifacts::cloudformation/stacksets/stackset-aws-backup-demo-resources.yaml
+      #       ParameterOverrides: |
+      #         {
+      #           "CommitId": "#{SourceVariables.CommitId}"
+      #         }
+      #     RunOrder: 1
 
   CodePipelineManageStepsRole:
     Type: AWS::IAM::Role
