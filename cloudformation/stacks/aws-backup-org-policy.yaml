@@ -3,7 +3,7 @@ Transform:
 - 'AWS::LanguageExtensions'
 Description: |
   AWS Organization Backup Policies - Multi-Environment Support
-  Adaptado para usar tag key 'data-type-bkp' con valores específicos por tipo de dato
+  Adaptado para usar tag key data-type-bkp con valores especificos por tipo de dato
   Basado en estrategia consolidada de retenciones por frecuencia
 
 Parameters:
