@@ -372,8 +372,6 @@ Resources:
                   complete_backup_window_minutes:
                     "@@assign": '1440'
                   lifecycle:
-                    move_to_cold_storage_after_days:
-                      "@@assign": '90'
                     delete_after_days:
                       "@@assign": '180'
                   target_backup_vault_name:
