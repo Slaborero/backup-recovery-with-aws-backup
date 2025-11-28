@@ -46,7 +46,7 @@ Parameters:
     Type: String
     Description: The backup tag key to automatically assign resources to a backup
       plan across the member accounts.
-    Default: 'backup'
+    Default: 'data-type-bkp'
   pBackupTagValue1:
     Type: String
     Description: The backup tag value to automatically assign resources to a backup
@@ -56,7 +56,7 @@ Parameters:
     Type: String
     Description: The backup tag key to automatically assign resources to a backup
       plan across the member accounts.
-    Default: 'backup'
+    Default: 'data-type-bkp'
   pBackupTagValue2:
     Type: String
     Description: The backup tag value to automatically assign resources to a backup
