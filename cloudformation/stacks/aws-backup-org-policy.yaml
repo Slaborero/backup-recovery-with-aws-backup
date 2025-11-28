@@ -54,12 +54,12 @@ Parameters:
   pDailyBackupSchedule:
     Description: CRON schedule for daily backups (Sun-Fri at 02:30 UTC)
     Type: String
-    Default: cron(30 2 ? * SUN-FRI *)
+    Default: cron(30 2 ? * 1-6 *)
   
   pWeeklyBackupSchedule:
     Description: CRON schedule for weekly backups (Saturday at 02:30 UTC)
     Type: String
-    Default: cron(30 2 ? * SAT *)
+    Default: cron(30 2 ? * 7 *)
   
   pMonthlyBackupSchedule:
     Description: CRON schedule for monthly backups (1st day of month at 02:30 UTC)
