@@ -76,6 +76,22 @@ Parameters:
     Description: The CRON job to initiate backup jobs. For example, cron(0 5 ? * 1 *) for weekly, every Sunday at 05:00 UTC.
     Type: String
     Default: cron(0 5 ? * 1 *)
+  pBackupTagKey4:
+    Type: String
+    Description: The backup tag key for monthly 3 months backup
+    Default: 'data-type-bkp'
+  pBackupTagValue4:
+    Type: String
+    Description: The backup tag value for monthly 3 months backup
+    Default: 'monthly-3m'
+  pBackupTagKey5:
+    Type: String
+    Description: The backup tag key for monthly 10 years backup
+    Default: 'data-type-bkp'
+  pBackupTagValue5:
+    Type: String
+    Description: The backup tag value for monthly 10 years backup
+    Default: 'monthly-10y'
   pTagKey:
     Type: String
     Description: This is the tag key to assign to resources.
@@ -326,6 +342,275 @@ Resources:
                     tag_value:
                       "@@assign":
                       - !Ref pBackupTagValue2
+      Tags:
+      - Key: Application
+        Value: !Ref Application
+      - Key: CommitId
+        Value: !Ref CommitId
+      - Key: BusinessUnit
+        Value: !Ref BusinessUnit
+      - Key: CostCenter
+        Value: !Ref CostCenter
+      - Key: Environment
+        Value: !Ref Environment
+      - Key: ApplicationOwner
+        Value: !Ref ApplicationOwner
+
+  rOrgMonthly3mBackUpPolicy:
+    Type: AWS::Organizations::Policy
+    Properties:
+      Name: monthly3-by-tag
+      Description: >-
+        BackupPolicy for Monthly Backup (3 months retention) with data-type-bkp tag key
+      Type: BACKUP_POLICY
+      TargetIds: !Ref pOrgBackupTargetOUs
+      Content:
+        Fn::ToJsonString:
+          plans:
+            OrgBackupPlanMonthly3m:
+              rules:
+                OrgMonthly3mBackupRule:
+                  schedule_expression:
+                    "@@assign": !Ref MonthlyBackupSchedule
+                  start_backup_window_minutes:
+                    "@@assign": '60'
+                  complete_backup_window_minutes:
+                    "@@assign": '1200'
+                  lifecycle:
+                    delete_after_days:
+                      "@@assign": '90'
+                  target_backup_vault_name:
+                    "@@assign": !Ref pMemberAccountBackupVault
+                  recovery_point_tags:
+                    project:
+                      tag_key:
+                        "@@assign": !Ref pTagKey
+                      tag_value:
+                        "@@assign": !Ref pTagValue
+                  copy_actions:
+                    arn:aws:backup:us-east-1:129654119448:backup-vault:AWSBackupSolutionCentralVault:
+                      target_backup_vault_arn:
+                        "@@assign": !Ref pCentralBackupVaultArn
+                      lifecycle:
+                        delete_after_days:
+                          "@@assign": '90'
+              backup_plan_tags:
+                project:
+                  tag_key:
+                    "@@assign": !Ref pTagKey
+                  tag_value:
+                    "@@assign": !Ref pTagValue
+              regions:
+                "@@append": !Ref pRegions
+              selections:
+                tags:
+                  OrgMonthly3mBackupSelection:
+                    iam_role_arn:
+                      "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
+                    tag_key:
+                      "@@assign": !Ref pBackupTagKey4
+                    tag_value:
+                      "@@assign":
+                      - 'audit-logs'
+                      - 'core-data'
+      Tags:
+      - Key: Application
+        Value: !Ref Application
+      - Key: CommitId
+        Value: !Ref CommitId
+      - Key: BusinessUnit
+        Value: !Ref BusinessUnit
+      - Key: CostCenter
+        Value: !Ref CostCenter
+      - Key: Environment
+        Value: !Ref Environment
+      - Key: ApplicationOwner
+        Value: !Ref ApplicationOwner
+
+  rOrgMonthly10yBackUpPolicy:
+    Type: AWS::Organizations::Policy
+    Properties:
+      Name: monthly10a-by-tag
+      Description: >-
+        BackupPolicy for Monthly Backup (10 years retention) with data-type-bkp tag key
+      Type: BACKUP_POLICY
+      TargetIds: !Ref pOrgBackupTargetOUs
+      Content:
+        Fn::ToJsonString:
+          plans:
+            OrgBackupPlanMonthly10y:
+              rules:
+                OrgMonthly10yBackupRule:
+                  schedule_expression:
+                    "@@assign": !Ref MonthlyBackupSchedule
+                  start_backup_window_minutes:
+                    "@@assign": '60'
+                  complete_backup_window_minutes:
+                    "@@assign": '1200'
+                  lifecycle:
+                    delete_after_days:
+                      "@@assign": '3650'
+                  target_backup_vault_name:
+                    "@@assign": !Ref pMemberAccountBackupVault
+                  recovery_point_tags:
+                    project:
+                      tag_key:
+                        "@@assign": !Ref pTagKey
+                      tag_value:
+                        "@@assign": !Ref pTagValue
+                  copy_actions:
+                    arn:aws:backup:us-east-1:129654119448:backup-vault:AWSBackupSolutionCentralVault:
+                      target_backup_vault_arn:
+                        "@@assign": !Ref pCentralBackupVaultArn
+                      lifecycle:
+                        delete_after_days:
+                          "@@assign": '3650'
+              backup_plan_tags:
+                project:
+                  tag_key:
+                    "@@assign": !Ref pTagKey
+                  tag_value:
+                    "@@assign": !Ref pTagValue
+              regions:
+                "@@append": !Ref pRegions
+              selections:
+                tags:
+                  OrgMonthly10yBackupSelection:
+                    iam_role_arn:
+                      "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
+                    tag_key:
+                      "@@assign": !Ref pBackupTagKey5
+                    tag_value:
+                      "@@assign":
+                      - 'transactions-regulated'
+                      - 'client-data'
+                      - 'financial-data'
+      Tags:
+      - Key: Application
+        Value: !Ref Application
+      - Key: CommitId
+        Value: !Ref CommitId
+      - Key: BusinessUnit
+        Value: !Ref BusinessUnit
+      - Key: CostCenter
+        Value: !Ref CostCenter
+      - Key: Environment
+        Value: !Ref Environment
+      - Key: ApplicationOwner
+        Value: !Ref ApplicationOwner
+
+  rOrgDefaultDailyBackUpPolicy:
+    Type: AWS::Organizations::Policy
+    Properties:
+      Name: default-daily
+      Description: >-
+        BackupPolicy for Daily Backup (default for resources without specific tags)
+      Type: BACKUP_POLICY
+      TargetIds: !Ref pOrgBackupTargetOUs
+      Content:
+        Fn::ToJsonString:
+          plans:
+            OrgBackupPlanDefaultDaily:
+              rules:
+                OrgDefaultDailyBackupRule:
+                  schedule_expression:
+                    "@@assign": !Ref DailyBackupSchedule
+                  start_backup_window_minutes:
+                    "@@assign": '60'
+                  complete_backup_window_minutes:
+                    "@@assign": '1200'
+                  lifecycle:
+                    delete_after_days:
+                      "@@assign": '7'
+                  target_backup_vault_name:
+                    "@@assign": !Ref pMemberAccountBackupVault
+                  recovery_point_tags:
+                    project:
+                      tag_key:
+                        "@@assign": !Ref pTagKey
+                      tag_value:
+                        "@@assign": !Ref pTagValue
+              backup_plan_tags:
+                project:
+                  tag_key:
+                    "@@assign": !Ref pTagKey
+                  tag_value:
+                    "@@assign": !Ref pTagValue
+              regions:
+                "@@append": !Ref pRegions
+              selections:
+                tags:
+                  OrgDefaultDailyBackupSelection:
+                    iam_role_arn:
+                      "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
+                    tag_key:
+                      "@@assign": 'backup-default'
+                    tag_value:
+                      "@@assign":
+                      - 'daily'
+      Tags:
+      - Key: Application
+        Value: !Ref Application
+      - Key: CommitId
+        Value: !Ref CommitId
+      - Key: BusinessUnit
+        Value: !Ref BusinessUnit
+      - Key: CostCenter
+        Value: !Ref CostCenter
+      - Key: Environment
+        Value: !Ref Environment
+      - Key: ApplicationOwner
+        Value: !Ref ApplicationOwner
+
+  rOrgDefaultWeeklyBackUpPolicy:
+    Type: AWS::Organizations::Policy
+    Properties:
+      Name: default-weekly
+      Description: >-
+        BackupPolicy for Weekly Backup (default for resources without specific tags)
+      Type: BACKUP_POLICY
+      TargetIds: !Ref pOrgBackupTargetOUs
+      Content:
+        Fn::ToJsonString:
+          plans:
+            OrgBackupPlanDefaultWeekly:
+              rules:
+                OrgDefaultWeeklyBackupRule:
+                  schedule_expression:
+                    "@@assign": !Ref WeeklyBackupSchedule
+                  start_backup_window_minutes:
+                    "@@assign": '60'
+                  complete_backup_window_minutes:
+                    "@@assign": '1200'
+                  lifecycle:
+                    delete_after_days:
+                      "@@assign": '30'
+                  target_backup_vault_name:
+                    "@@assign": !Ref pMemberAccountBackupVault
+                  recovery_point_tags:
+                    project:
+                      tag_key:
+                        "@@assign": !Ref pTagKey
+                      tag_value:
+                        "@@assign": !Ref pTagValue
+              backup_plan_tags:
+                project:
+                  tag_key:
+                    "@@assign": !Ref pTagKey
+                  tag_value:
+                    "@@assign": !Ref pTagValue
+              regions:
+                "@@append": !Ref pRegions
+              selections:
+                tags:
+                  OrgDefaultWeeklyBackupSelection:
+                    iam_role_arn:
+                      "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
+                    tag_key:
+                      "@@assign": 'backup-default'
+                    tag_value:
+                      "@@assign":
+                      - 'weekly'
       Tags:
       - Key: Application
         Value: !Ref Application
