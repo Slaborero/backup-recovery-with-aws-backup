@@ -351,76 +351,79 @@ Resources:
   # ========================================
   # POLICY 4: MONTHLY BACKUP - 180 DAYS (with Cold Storage)
   # Tag Values: regulated-logs, backup-monthly-6
+  # TEMPORAL: Comentado para investigar error de validacion
+  # Error: "policy document does not meet requirements"
+  # Ver: historico/ERROR_ORG_POLICY_MONTHLY180D_28NOV2025.md
   # ========================================
-  rOrgBackupPolicyMonthly180d:
-    Type: AWS::Organizations::Policy
-    Properties:
-      Name: org-backup-monthly-180d-production
-      Description: Monthly backup (4th Saturday) for regulated logs with 180 days retention and cold storage
-      Type: BACKUP_POLICY
-      TargetIds: !Ref pOrgBackupTargetOUsProduction
-      Content:
-        Fn::ToJsonString:
-          plans:
-            OrgBackupPlanMonthly180d:
-              rules:
-                OrgMonthlyBackupRule180d:
-                  schedule_expression:
-                    "@@assign": !Ref pMonthlyBackupSchedule
-                  start_backup_window_minutes:
-                    "@@assign": '60'
-                  complete_backup_window_minutes:
-                    "@@assign": '1440'
-                  lifecycle:
-                    move_to_cold_storage_after_days:
-                      "@@assign": '90'
-                    delete_after_days:
-                      "@@assign": '180'
-                  target_backup_vault_name:
-                    "@@assign": !Ref pMemberAccountBackupVault
-                  recovery_point_tags:
-                    project:
-                      tag_key:
-                        "@@assign": !Ref pTagKey
-                      tag_value:
-                        "@@assign": !Ref pTagValue
-                    retention:
-                      tag_key:
-                        "@@assign": "retention-days"
-                      tag_value:
-                        "@@assign": "180"
-              backup_plan_tags:
-                project:
-                  tag_key:
-                    "@@assign": !Ref pTagKey
-                  tag_value:
-                    "@@assign": !Ref pTagValue
-              regions:
-                "@@append": !Ref pRegions
-              selections:
-                tags:
-                  OrgMonthly180dSelection:
-                    iam_role_arn:
-                      "@@assign": !Sub 'arn:aws:iam::$account:role/${pCrossAccountBackupRole}'
-                    tag_key:
-                      "@@assign": !Ref pBackupTagKey
-                    tag_value:
-                      "@@assign":
-                      - "regulated-logs"
-                      - "backup-monthly-6"
-      Tags:
-      - Key: Application
-        Value: !Ref Application
-      - Key: CommitId
-        Value: !Ref CommitId
-      - Key: BusinessUnit
-        Value: !Ref BusinessUnit
-      - Key: CostCenter
-        Value: !Ref CostCenter
-      - Key: Environment
-        Value: !Ref Environment
-      - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+  # rOrgBackupPolicyMonthly180d:
+  #   Type: AWS::Organizations::Policy
+  #   Properties:
+  #     Name: org-backup-monthly-180d-production
+  #     Description: Monthly backup (4th Saturday) for regulated logs with 180 days retention and cold storage
+  #     Type: BACKUP_POLICY
+  #     TargetIds: !Ref pOrgBackupTargetOUsProduction
+  #     Content:
+  #       Fn::ToJsonString:
+  #         plans:
+  #           OrgBackupPlanMonthly180d:
+  #             rules:
+  #               OrgMonthlyBackupRule180d:
+  #                 schedule_expression:
+  #                   "@@assign": !Ref pMonthlyBackupSchedule
+  #                 start_backup_window_minutes:
+  #                   "@@assign": '60'
+  #                 complete_backup_window_minutes:
+  #                   "@@assign": '1440'
+  #                 lifecycle:
+  #                   move_to_cold_storage_after_days:
+  #                     "@@assign": '90'
+  #                   delete_after_days:
+  #                     "@@assign": '180'
+  #                 target_backup_vault_name:
+  #                   "@@assign": !Ref pMemberAccountBackupVault
+  #                 recovery_point_tags:
+  #                   project:
+  #                     tag_key:
+  #                       "@@assign": !Ref pTagKey
+  #                     tag_value:
+  #                       "@@assign": !Ref pTagValue
+  #                   retention:
+  #                     tag_key:
+  #                       "@@assign": "retention-days"
+  #                     tag_value:
+  #                       "@@assign": "180"
+  #             backup_plan_tags:
+  #               project:
+  #                 tag_key:
+  #                   "@@assign": !Ref pTagKey
+  #                 tag_value:
+  #                   "@@assign": !Ref pTagValue
+  #             regions:
+  #               "@@append": !Ref pRegions
+  #             selections:
+  #               tags:
+  #                 OrgMonthly180dSelection:
+  #                   iam_role_arn:
+  #                     "@@assign": !Sub 'arn:aws:iam::$account:role/${pCrossAccountBackupRole}'
+  #                   tag_key:
+  #                     "@@assign": !Ref pBackupTagKey
+  #                   tag_value:
+  #                     "@@assign":
+  #                     - "regulated-logs"
+  #                     - "backup-monthly-6"
+  #     Tags:
+  #     - Key: Application
+  #       Value: !Ref Application
+  #     - Key: CommitId
+  #       Value: !Ref CommitId
+  #     - Key: BusinessUnit
+  #       Value: !Ref BusinessUnit
+  #     - Key: CostCenter
+  #       Value: !Ref CostCenter
+  #     - Key: Environment
+  #       Value: !Ref Environment
+  #     - Key: ApplicationOwner
+  #       Value: !Ref ApplicationOwner
 
 
   # ========================================
@@ -699,9 +702,9 @@ Outputs:
     Description: Organization Policy ID for Monthly 90d Backup
     Value: !Ref rOrgBackupPolicyMonthly90d
   
-  BackupPolicyMonthly180dId:
-    Description: Organization Policy ID for Monthly 180d Backup
-    Value: !Ref rOrgBackupPolicyMonthly180d
+  # BackupPolicyMonthly180dId:
+  #   Description: Organization Policy ID for Monthly 180d Backup
+  #   Value: !Ref rOrgBackupPolicyMonthly180d
   
   BackupPolicyCriticalDailyId:
     Description: Organization Policy ID for Critical Daily Backup
