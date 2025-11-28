@@ -141,7 +141,7 @@ Parameters:
     Default: Example Application
 
 Resources:
-  rOrgDailyBackUpPolicy:
+  rOrgDailyByTagPolicy:
     Type: AWS::Organizations::Policy
     Properties:
       Name: daily-by-tag
@@ -213,7 +213,7 @@ Resources:
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
 
-  rOrgWeeklyBackUpPolicy:
+  rOrgWeeklyByTagPolicy:
     Type: AWS::Organizations::Policy
     Properties:
       Name: weekly-by-tag
@@ -284,7 +284,7 @@ Resources:
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
 
-  rOrgMonthlyBackUpPolicy:
+  rOrgMonthly6ByTagPolicy:
     Type: AWS::Organizations::Policy
     Properties:
       Name: monthly6-by-tag
