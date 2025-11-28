@@ -114,9 +114,9 @@ Resources:
   rOrgDailyBackUpPolicy:
     Type: AWS::Organizations::Policy
     Properties:
-      Name: org-daily-backup-policy
+      Name: org-daily-backup-policy-v2
       Description: >-
-        BackupPolicy for Daily Backup as per the resource selection criteria
+        BackupPolicy for Daily Backup with data-type-bkp tag key
       Type: BACKUP_POLICY
       TargetIds: !Ref pOrgBackupTargetOUs
       Content:
@@ -186,9 +186,9 @@ Resources:
   rOrgMonthlyBackUpPolicy:
     Type: AWS::Organizations::Policy
     Properties:
-      Name: org-monthly-backup-policy
+      Name: org-monthly-backup-policy-v2
       Description: >-
-        BackupPolicy for Monthly Backup as per the resource selection criteria
+        BackupPolicy for Monthly Backup with data-type-bkp tag key
       Type: BACKUP_POLICY
       TargetIds: !Ref pOrgBackupTargetOUs
       Content:
