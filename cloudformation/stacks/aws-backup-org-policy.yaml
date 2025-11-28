@@ -62,9 +62,9 @@ Parameters:
     Default: cron(30 2 ? * SAT *)
   
   pMonthlyBackupSchedule:
-    Description: CRON schedule for monthly backups (4th Saturday at 02:30 UTC)
+    Description: CRON schedule for monthly backups (1st day of month at 02:30 UTC)
     Type: String
-    Default: cron(30 2 ? * 7#4 *)
+    Default: cron(30 2 1 * ? *)
   
   # ========================================
   # TAGGING
