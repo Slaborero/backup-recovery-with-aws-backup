@@ -189,106 +189,111 @@ Resources:
     Properties:
       S3BucketName: !Ref rConfigBucket
 
-  rFramework:
-    Type: AWS::Backup::Framework
-    Properties:
-      FrameworkControls:
-      - !If
-        - DeployControl1Condition
-        - ControlName: BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN
-          ControlScope:
-            Tags:
-            - Key: 'data-type-bkp'
-              Value: ''
-        - !Ref "AWS::NoValue"
-
-      - !If
-        - DeployControl2Condition
-        - ControlName: BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK
-          ControlInputParameters:
-          - ParameterName: requiredRetentionDays
-            ParameterValue: '7'
-          ControlScope:
-            Tags:
-            - Key: 'data-type-bkp'
-              Value: ''
-        - !Ref "AWS::NoValue"
-
-      - !If
-        - DeployControl3Condition
-        - ControlName: BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED
-        - !Ref "AWS::NoValue"
-
-      - !If
-        - DeployControl4Condition
-        - ControlName: BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK
-          ControlInputParameters:
-          - ParameterName: requiredRetentionDays
-            ParameterValue: '7'
-          - ParameterName: requiredFrequencyUnit
-            ParameterValue: 'hours'
-          - ParameterName: requiredFrequencyValue
-            ParameterValue: '24'
-          ControlScope:
-            Tags:
-            - Key: 'data-type-bkp'
-              Value: ''
-        - !Ref "AWS::NoValue"
-
-      - !If
-        - DeployControl5Condition
-        - ControlName: BACKUP_RECOVERY_POINT_ENCRYPTED
-          ControlScope:
-            Tags:
-            - Key: 'data-type-bkp'
-              Value: ''
-        - !Ref "AWS::NoValue"
-
-      - !If
-        - DeployControl6Condition
-        - ControlName: BACKUP_RESOURCES_PROTECTED_BY_CROSS_REGION
-        - !Ref "AWS::NoValue"
-
-      - !If
-        - DeployControl7Condition
-        - ControlName: BACKUP_RESOURCES_PROTECTED_BY_CROSS_ACCOUNT
-          ControlScope:
-            Tags:
-            - Key: 'data-type-bkp'
-              Value: ''
-        - !Ref "AWS::NoValue"
-
-      - !If
-        - DeployControl8Condition
-        - ControlName: BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK
-        - !Ref "AWS::NoValue"
-
-      - !If
-        - DeployControl9Condition
-        - ControlName: BACKUP_LAST_RECOVERY_POINT_CREATED
-          ControlScope:
-            Tags:
-            - Key: 'data-type-bkp'
-              Value: ''
-        - !Ref "AWS::NoValue"
-
-      - !If
-        - DeployControl10Condition
-        - ControlName: RESTORE_TIME_FOR_RESOURCES_MEET_TARGET
-          ControlInputParameters:
-          - ParameterName: maxRestoreTime
-            ParameterValue: '720'
-        - !Ref "AWS::NoValue"
-      FrameworkTags:
-      - Key: Application
-        Value: !Ref Application
-      - Key: CommitId
-        Value: !Ref CommitId
-      - Key: BusinessUnit
-        Value: !Ref BusinessUnit
-      - Key: CostCenter
-        Value: !Ref CostCenter
-      - Key: Environment
-        Value: !Ref Environment
-      - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+  # TEMPORAL: Framework deshabilitado hasta que el entorno este preparado
+  # Ver: historico/RECOMENDACION_DESHABILITAR_FRAMEWORK_28NOV2025.md
+  # Razon: Framework falla repetidamente durante despliegue inicial
+  # Plan: Habilitar despues de que las politicas de backup esten funcionando
+  #
+  # rFramework:
+  #   Type: AWS::Backup::Framework
+  #   Properties:
+  #     FrameworkControls:
+  #     - !If
+  #       - DeployControl1Condition
+  #       - ControlName: BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN
+  #         ControlScope:
+  #           Tags:
+  #           - Key: 'data-type-bkp'
+  #             Value: ''
+  #       - !Ref "AWS::NoValue"
+  #
+  #     - !If
+  #       - DeployControl2Condition
+  #       - ControlName: BACKUP_RECOVERY_POINT_MINIMUM_RETENTION_CHECK
+  #         ControlInputParameters:
+  #         - ParameterName: requiredRetentionDays
+  #           ParameterValue: '7'
+  #         ControlScope:
+  #           Tags:
+  #           - Key: 'data-type-bkp'
+  #             Value: ''
+  #       - !Ref "AWS::NoValue"
+  #
+  #     - !If
+  #       - DeployControl3Condition
+  #       - ControlName: BACKUP_RECOVERY_POINT_MANUAL_DELETION_DISABLED
+  #       - !Ref "AWS::NoValue"
+  #
+  #     - !If
+  #       - DeployControl4Condition
+  #       - ControlName: BACKUP_PLAN_MIN_FREQUENCY_AND_MIN_RETENTION_CHECK
+  #         ControlInputParameters:
+  #         - ParameterName: requiredRetentionDays
+  #           ParameterValue: '7'
+  #         - ParameterName: requiredFrequencyUnit
+  #           ParameterValue: 'hours'
+  #         - ParameterName: requiredFrequencyValue
+  #           ParameterValue: '24'
+  #         ControlScope:
+  #           Tags:
+  #           - Key: 'data-type-bkp'
+  #             Value: ''
+  #       - !Ref "AWS::NoValue"
+  #
+  #     - !If
+  #       - DeployControl5Condition
+  #       - ControlName: BACKUP_RECOVERY_POINT_ENCRYPTED
+  #         ControlScope:
+  #           Tags:
+  #           - Key: 'data-type-bkp'
+  #             Value: ''
+  #       - !Ref "AWS::NoValue"
+  #
+  #     - !If
+  #       - DeployControl6Condition
+  #       - ControlName: BACKUP_RESOURCES_PROTECTED_BY_CROSS_REGION
+  #       - !Ref "AWS::NoValue"
+  #
+  #     - !If
+  #       - DeployControl7Condition
+  #       - ControlName: BACKUP_RESOURCES_PROTECTED_BY_CROSS_ACCOUNT
+  #         ControlScope:
+  #           Tags:
+  #           - Key: 'data-type-bkp'
+  #             Value: ''
+  #       - !Ref "AWS::NoValue"
+  #
+  #     - !If
+  #       - DeployControl8Condition
+  #       - ControlName: BACKUP_RESOURCES_PROTECTED_BY_BACKUP_VAULT_LOCK
+  #       - !Ref "AWS::NoValue"
+  #
+  #     - !If
+  #       - DeployControl9Condition
+  #       - ControlName: BACKUP_LAST_RECOVERY_POINT_CREATED
+  #         ControlScope:
+  #           Tags:
+  #           - Key: 'data-type-bkp'
+  #             Value: ''
+  #       - !Ref "AWS::NoValue"
+  #
+  #     - !If
+  #       - DeployControl10Condition
+  #       - ControlName: RESTORE_TIME_FOR_RESOURCES_MEET_TARGET
+  #         ControlInputParameters:
+  #         - ParameterName: maxRestoreTime
+  #           ParameterValue: '720'
+  #       - !Ref "AWS::NoValue"
+  #     FrameworkTags:
+  #     - Key: Application
+  #       Value: !Ref Application
+  #     - Key: CommitId
+  #       Value: !Ref CommitId
+  #     - Key: BusinessUnit
+  #       Value: !Ref BusinessUnit
+  #     - Key: CostCenter
+  #       Value: !Ref CostCenter
+  #     - Key: Environment
+  #       Value: !Ref Environment
+  #     - Key: ApplicationOwner
+  #       Value: !Ref ApplicationOwner
