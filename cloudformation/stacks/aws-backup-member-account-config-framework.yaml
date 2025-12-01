@@ -198,7 +198,7 @@ Resources:
         - ControlName: BACKUP_RESOURCES_PROTECTED_BY_BACKUP_PLAN
           ControlScope:
             Tags:
-            - Key: 'data-type-bkp'
+            - Key: 'backup'
               Value: ''
         - !Ref "AWS::NoValue"
 
@@ -210,7 +210,7 @@ Resources:
             ParameterValue: '7'
           ControlScope:
             Tags:
-            - Key: 'data-type-bkp'
+            - Key: 'backup'
               Value: ''
         - !Ref "AWS::NoValue"
 
@@ -231,7 +231,7 @@ Resources:
             ParameterValue: '24'
           ControlScope:
             Tags:
-            - Key: 'data-type-bkp'
+            - Key: 'backup'
               Value: ''
         - !Ref "AWS::NoValue"
 
@@ -240,7 +240,7 @@ Resources:
         - ControlName: BACKUP_RECOVERY_POINT_ENCRYPTED
           ControlScope:
             Tags:
-            - Key: 'data-type-bkp'
+            - Key: 'backup'
               Value: ''
         - !Ref "AWS::NoValue"
 
@@ -254,7 +254,7 @@ Resources:
         - ControlName: BACKUP_RESOURCES_PROTECTED_BY_CROSS_ACCOUNT
           ControlScope:
             Tags:
-            - Key: 'data-type-bkp'
+            - Key: 'backup'
               Value: ''
         - !Ref "AWS::NoValue"
 
@@ -268,7 +268,7 @@ Resources:
         - ControlName: BACKUP_LAST_RECOVERY_POINT_CREATED
           ControlScope:
             Tags:
-            - Key: 'data-type-bkp'
+            - Key: 'backup'
               Value: ''
         - !Ref "AWS::NoValue"
 
