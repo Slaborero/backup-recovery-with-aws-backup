@@ -202,8 +202,10 @@ Resources:
       Tags:
       - Key: Application
         Value: !Ref Application
-      - Key: CommitId
-        Value: !Ref CommitId
+      # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
+      # CloudFormation lacks permissions to update existing policies, causing deployment failures
+      # - Key: CommitId
+        #   Value: !Ref CommitId
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -273,8 +275,10 @@ Resources:
       Tags:
       - Key: Application
         Value: !Ref Application
-      - Key: CommitId
-        Value: !Ref CommitId
+      # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
+      # CloudFormation lacks permissions to update existing policies, causing deployment failures
+      # - Key: CommitId
+        #   Value: !Ref CommitId
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -345,8 +349,10 @@ Resources:
       Tags:
       - Key: Application
         Value: !Ref Application
-      - Key: CommitId
-        Value: !Ref CommitId
+      # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
+      # CloudFormation lacks permissions to update existing policies, causing deployment failures
+      # - Key: CommitId
+        #   Value: !Ref CommitId
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -416,8 +422,10 @@ Resources:
       Tags:
       - Key: Application
         Value: !Ref Application
-      - Key: CommitId
-        Value: !Ref CommitId
+      # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
+      # CloudFormation lacks permissions to update existing policies, causing deployment failures
+      # - Key: CommitId
+        #   Value: !Ref CommitId
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -488,8 +496,10 @@ Resources:
       Tags:
       - Key: Application
         Value: !Ref Application
-      - Key: CommitId
-        Value: !Ref CommitId
+      # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
+      # CloudFormation lacks permissions to update existing policies, causing deployment failures
+      # - Key: CommitId
+        #   Value: !Ref CommitId
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -551,8 +561,10 @@ Resources:
       Tags:
       - Key: Application
         Value: !Ref Application
-      - Key: CommitId
-        Value: !Ref CommitId
+      # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
+      # CloudFormation lacks permissions to update existing policies, causing deployment failures
+      # - Key: CommitId
+        #   Value: !Ref CommitId
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -614,8 +626,10 @@ Resources:
       Tags:
       - Key: Application
         Value: !Ref Application
-      - Key: CommitId
-        Value: !Ref CommitId
+      # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
+      # CloudFormation lacks permissions to update existing policies, causing deployment failures
+      # - Key: CommitId
+        #   Value: !Ref CommitId
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
