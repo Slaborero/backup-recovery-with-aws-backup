@@ -128,7 +128,7 @@ Resources:
         ParameterValue: !Ref CentralBackupVaultArn
       - ParameterKey: CentralAccountId
         ParameterValue: !Ref CentralAccountId
-      - ParameterKey: Application
+      - ParameterKey: product
         ParameterValue: !Ref product
       - ParameterKey: BusinessUnit
         ParameterValue: !Ref BusinessUnit
@@ -136,7 +136,7 @@ Resources:
         ParameterValue: !Ref CostCenter
       - ParameterKey: Environment
         ParameterValue: !Ref Environment
-      - ParameterKey: ApplicationOwner
+      - ParameterKey: productOwner
         ParameterValue: !Ref ApplicationOwner
       - ParameterKey: GitlabProjectId
         ParameterValue: !Ref GitlabProjectId

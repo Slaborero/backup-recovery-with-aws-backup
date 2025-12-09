@@ -190,7 +190,7 @@ Resources:
           ParameterKey: TagValue
           ParameterValue: !Ref TagValue
 
-        - ParameterKey: Application
+        - ParameterKey: product
           ParameterValue: !Ref product
         - ParameterKey: CommitId
           ParameterValue: !Ref CommitId
@@ -200,7 +200,7 @@ Resources:
           ParameterValue: !Ref CostCenter
         - ParameterKey: Environment
           ParameterValue: !Ref Environment
-        - ParameterKey: ApplicationOwner
+        - ParameterKey: productOwner
           ParameterValue: !Ref ApplicationOwner
         - ParameterKey: GitlabProjectId
           ParameterValue: !Ref GitlabProjectId
