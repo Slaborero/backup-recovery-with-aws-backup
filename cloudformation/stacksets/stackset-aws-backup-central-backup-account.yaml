@@ -137,7 +137,7 @@ Resources:
           ParameterValue: !Ref CostCenter
         - ParameterKey: Environment
           ParameterValue: !Ref Environment
-        - ParameterKey: productOwner
+        - ParameterKey: ApplicationOwner
           ParameterValue: !Ref ApplicationOwner
         - ParameterKey: GitlabProjectId
           ParameterValue: !Ref GitlabProjectId
