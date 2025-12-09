@@ -137,7 +137,7 @@ Resources:
       - ParameterKey: Environment
         ParameterValue: !Ref Environment
       - ParameterKey: ApplicationOwner
-        ParameterValue: !Ref productOwner
+        ParameterValue: !Ref ApplicationOwner
       - ParameterKey: GitlabProjectId
         ParameterValue: !Ref GitlabProjectId
       - ParameterKey: Provider
@@ -155,7 +155,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref productOwner
+        Value: !Ref ApplicationOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider

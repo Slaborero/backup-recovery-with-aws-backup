@@ -141,7 +141,7 @@ Resources:
         - Key: Environment
           Value: !Ref Environment
         - Key: ApplicationOwner
-          Value: !Ref productOwner
+          Value: !Ref ApplicationOwner
         - Key: gitlab-project-id
           Value: !Ref GitlabProjectId
         - Key: provider
@@ -175,7 +175,7 @@ Resources:
         - Key: Environment
           Value: !Ref Environment
         - Key: ApplicationOwner
-          Value: !Ref productOwner
+          Value: !Ref ApplicationOwner
         - Key: gitlab-project-id
           Value: !Ref GitlabProjectId
         - Key: provider

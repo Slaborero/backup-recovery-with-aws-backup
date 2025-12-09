@@ -50,7 +50,7 @@ Metadata:
       - CostCenter
       - Environment
       - ApplicationOwner
-      - Application
+      - product
       - GitlabProjectId
       - Provider
     - Label:
@@ -478,7 +478,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -494,7 +494,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -510,7 +510,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -526,7 +526,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -542,7 +542,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -558,7 +558,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -574,7 +574,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -590,7 +590,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -606,7 +606,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -622,7 +622,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -638,7 +638,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -654,7 +654,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -670,7 +670,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -686,7 +686,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -702,7 +702,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -718,7 +718,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -734,7 +734,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -750,7 +750,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -766,7 +766,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -782,7 +782,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -798,7 +798,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -814,7 +814,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -830,7 +830,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -846,7 +846,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -862,7 +862,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -878,7 +878,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -894,7 +894,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -910,7 +910,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -926,7 +926,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -942,7 +942,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -958,7 +958,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -974,7 +974,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -990,7 +990,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1007,7 +1007,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1024,7 +1024,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1041,7 +1041,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1058,7 +1058,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1075,7 +1075,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1091,7 +1091,7 @@ Resources:
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref productOwner
+        ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1125,7 +1125,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref productOwner
+        Value: !Ref ApplicationOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -1222,7 +1222,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref productOwner
+        Value: !Ref ApplicationOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -1593,7 +1593,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref productOwner
+        Value: !Ref ApplicationOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -1629,7 +1629,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref productOwner
+        Value: !Ref ApplicationOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -1690,7 +1690,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref productOwner
+        Value: !Ref ApplicationOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -1798,7 +1798,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref productOwner
+        Value: !Ref ApplicationOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider

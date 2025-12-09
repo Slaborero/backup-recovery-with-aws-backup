@@ -133,7 +133,7 @@ Resources:
         - Key: CostCenter
           Value: !Ref CostCenter
         - Key: ApplicationOwner
-          Value: !Ref productOwner
+          Value: !Ref ApplicationOwner
         - Key: Application
           Value: !Ref product
         - Key: Environment
@@ -191,7 +191,7 @@ Resources:
         - Key: CostCenter
           Value: !Ref CostCenter
         - Key: ApplicationOwner
-          Value: !Ref productOwner
+          Value: !Ref ApplicationOwner
         - Key: Application
           Value: !Ref product
         - Key: Environment
