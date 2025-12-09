@@ -53,6 +53,18 @@ Parameters:
     Description: Application Name
     Type: String
     Default:  Example Application
+  GitlabProjectId:
+    Description: GitLab Project ID for tracking and integration
+    Type: String
+    Default: '12345678'
+  Provider:
+    Description: Cloud provider
+    Type: String
+    AllowedValues:
+    - aws
+    - azure
+    - gcp
+    Default: aws
 
 Resources:
   rCentralAccountBackupKey:
@@ -126,6 +138,10 @@ Resources:
           Value: !Ref Application
         - Key: Environment
           Value: !Ref Environment
+        - Key: gitlab-project-id
+          Value: !Ref GitlabProjectId
+        - Key: provider
+          Value: !Ref Provider
 
   rCentralAccountBackupKeyAlias:
     Type: AWS::KMS::Alias
@@ -180,6 +196,10 @@ Resources:
           Value: !Ref Application
         - Key: Environment
           Value: !Ref Environment
+        - Key: gitlab-project-id
+          Value: !Ref GitlabProjectId
+        - Key: provider
+          Value: !Ref Provider
 
 Outputs:
   oCentralBackupVault:

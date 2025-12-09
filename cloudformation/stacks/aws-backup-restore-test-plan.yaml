@@ -73,6 +73,18 @@ Parameters:
     Description: Application Name.
     Type: String
     Default: Backup and Recovery with AWS Backup
+  GitlabProjectId:
+    Description: GitLab Project ID for tracking and integration
+    Type: String
+    Default: '12345678'
+  Provider:
+    Description: Cloud provider
+    Type: String
+    AllowedValues:
+    - aws
+    - azure
+    - gcp
+    Default: aws
 
 Resources:
   AWSBackupRestoreTestingRole:
@@ -130,6 +142,10 @@ Resources:
           Value: !Ref Environment
         - Key: ApplicationOwner
           Value: !Ref ApplicationOwner
+        - Key: gitlab-project-id
+          Value: !Ref GitlabProjectId
+        - Key: provider
+          Value: !Ref Provider
 
   RestoreTestPlan:
     Type: AWS::Backup::RestoreTestingPlan
@@ -160,6 +176,10 @@ Resources:
           Value: !Ref Environment
         - Key: ApplicationOwner
           Value: !Ref ApplicationOwner
+        - Key: gitlab-project-id
+          Value: !Ref GitlabProjectId
+        - Key: provider
+          Value: !Ref Provider
 
   RestoreTestSelection:
     Type: AWS::Backup::RestoreTestingSelection

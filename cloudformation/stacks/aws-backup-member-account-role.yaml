@@ -56,6 +56,18 @@ Parameters:
     Description: Application Name
     Type: String
     Default: Example Application
+  GitlabProjectId:
+    Description: GitLab Project ID for tracking and integration
+    Type: String
+    Default: '12345678'
+  Provider:
+    Description: Cloud provider
+    Type: String
+    AllowedValues:
+    - aws
+    - azure
+    - gcp
+    Default: aws
 
 Conditions:
   DeployConfigurationRecorderCondition: !Equals [ !Ref DeployConfigurationRecorder, "true" ]
@@ -92,6 +104,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   rOrgAccountConfigRole:
     Condition: DeployConfigurationRecorderCondition
@@ -122,6 +138,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 Outputs:
   oOrgAccountBackupRoleName:
     Value: !Ref pCrossAccountBackupRoleName

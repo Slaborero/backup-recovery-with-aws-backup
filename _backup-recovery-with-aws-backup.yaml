@@ -51,6 +51,8 @@ Metadata:
       - Environment
       - ApplicationOwner
       - Application
+      - GitlabProjectId
+      - Provider
     - Label:
         default: "AWS Backup Framework Configuration"
       Parameters:
@@ -123,6 +125,10 @@ Metadata:
         default: "Application Owner"
       Application:
         default: "Application Name"
+      GitlabProjectId:
+        default: "GitLab Project ID"
+      Provider:
+        default: "Cloud Provider"
       RestoreTestSchedule:
         default: "Restore Test Schedule (CRON)"
       RestoreSubnetEC2:
@@ -323,6 +329,18 @@ Parameters:
     Description: Application Name
     Type: String
     Default: Backup and Recovery with AWS Backup
+  GitlabProjectId:
+    Description: GitLab Project ID for tracking and integration
+    Type: String
+    Default: '12345678'
+  Provider:
+    Description: Cloud provider
+    Type: String
+    AllowedValues:
+    - aws
+    - azure
+    - gcp
+    Default: aws
   DeployControl1:
     Description: 'Do you want to evaluates if resources are included in at least one backup plan?'
     Type: String
@@ -461,6 +479,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupBucket:
     Type: AWS::SSM::Parameter
@@ -475,6 +495,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupSolutionOrgUnit:
     Type: AWS::SSM::Parameter
@@ -489,6 +511,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupCentralAccountOUSSM:
     Type: AWS::SSM::Parameter
@@ -503,6 +527,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupCentralAccountIdSSM:
     Type: AWS::SSM::Parameter
@@ -517,6 +543,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupCentralAccountRegionSSM:
     Type: AWS::SSM::Parameter
@@ -531,6 +559,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupCentralVaultSSM:
     Type: AWS::SSM::Parameter
@@ -545,6 +575,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   RestoreTestScheduleParameter:
     Type: AWS::SSM::Parameter
@@ -559,6 +591,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   RestoreSubnetEC2Parameter:
     Type: AWS::SSM::Parameter
@@ -573,6 +607,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   RestoreSecurityGroupIdEC2Parameter:
     Type: AWS::SSM::Parameter
@@ -587,6 +623,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   RestoreValidationHoursEC2Parameter:
     Type: AWS::SSM::Parameter
@@ -601,6 +639,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   SelectionWindowDaysParameter:
     Type: AWS::SSM::Parameter
@@ -615,6 +655,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   StartWindowHoursParameter:
     Type: AWS::SSM::Parameter
@@ -629,6 +671,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   TagKeyParameter:
     Type: AWS::SSM::Parameter
@@ -643,6 +687,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   TagValueParameter:
     Type: AWS::SSM::Parameter
@@ -657,6 +703,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupTargetGlobalRegion:
     Type: AWS::SSM::Parameter
@@ -671,6 +719,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupTargetRegions:
     Type: AWS::SSM::Parameter
@@ -685,6 +735,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupTargetOUs:
     Type: AWS::SSM::Parameter
@@ -699,6 +751,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl1:
     Type: AWS::SSM::Parameter
@@ -713,6 +767,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DemoEC2InstanceType:
     Type: AWS::SSM::Parameter
@@ -727,6 +783,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DemoVPCCIDR:
     Type: AWS::SSM::Parameter
@@ -741,6 +799,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DemoSubnetCIDR:
     Type: AWS::SSM::Parameter
@@ -755,6 +815,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DemoTagKey:
     Type: AWS::SSM::Parameter
@@ -769,6 +831,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DemoTagValue:
     Type: AWS::SSM::Parameter
@@ -783,6 +847,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl2:
     Type: AWS::SSM::Parameter
@@ -797,6 +863,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl3:
     Type: AWS::SSM::Parameter
@@ -811,6 +879,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl4:
     Type: AWS::SSM::Parameter
@@ -825,6 +895,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl5:
     Type: AWS::SSM::Parameter
@@ -839,6 +911,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl6:
     Type: AWS::SSM::Parameter
@@ -853,6 +927,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl7:
     Type: AWS::SSM::Parameter
@@ -867,6 +943,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl8:
     Type: AWS::SSM::Parameter
@@ -881,6 +959,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl9:
     Type: AWS::SSM::Parameter
@@ -895,6 +975,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl10:
     Type: AWS::SSM::Parameter
@@ -909,6 +991,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   ResourceComplianceReportPlan:
     Condition: DeployReportFeatureCondition
@@ -924,6 +1008,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   ControlComplianceReportPlan:
     Condition: DeployReportFeatureCondition
@@ -939,6 +1025,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   BackupJobReportPlan:
     Condition: DeployReportFeatureCondition
@@ -954,6 +1042,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   CopyJobReportPlan:
     Condition: DeployReportFeatureCondition
@@ -969,6 +1059,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   RestoreJobReportPlan:
     Condition: DeployReportFeatureCondition
@@ -984,6 +1076,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   ConfigurationRecorder:
     Type: AWS::SSM::Parameter
@@ -998,6 +1092,8 @@ Resources:
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DeploymentBucket:
     Type: "AWS::S3::Bucket"
@@ -1019,6 +1115,21 @@ Resources:
         - Id: DeleteRule
           Status: Enabled
           ExpirationInDays: '90'
+      Tags:
+      - Key: Application
+        Value: !Ref Application
+      - Key: BusinessUnit
+        Value: !Ref BusinessUnit
+      - Key: CostCenter
+        Value: !Ref CostCenter
+      - Key: Environment
+        Value: !Ref Environment
+      - Key: ApplicationOwner
+        Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   DeploymentBucketPolicy:
     Type: "AWS::S3::BucketPolicy"
@@ -1112,6 +1223,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   CreateAMIKmsKeyAlias:
     Type: AWS::KMS::Alias
@@ -1479,6 +1594,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   CodeBuildValidateTemplates:
     Type: AWS::CodeBuild::Project
@@ -1511,6 +1630,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   CodeBuildRole:
     Type: AWS::IAM::Role
@@ -1568,6 +1691,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   CloudFormationRole:
     Type: AWS::IAM::Role
@@ -1661,6 +1788,21 @@ Resources:
             - 'kms:DescribeKey'
             Resource: !GetAtt CodePipelineKMSKey.Arn
             Effect: Allow
+      Tags:
+      - Key: Application
+        Value: !Ref Application
+      - Key: BusinessUnit
+        Value: !Ref BusinessUnit
+      - Key: CostCenter
+        Value: !Ref CostCenter
+      - Key: Environment
+        Value: !Ref Environment
+      - Key: ApplicationOwner
+        Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
 Outputs:
   DeploymentBucketName:

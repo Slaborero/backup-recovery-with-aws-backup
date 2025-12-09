@@ -67,6 +67,18 @@ Parameters:
     Description: Application Name
     Type: String
     Default: Example Application
+  GitlabProjectId:
+    Description: GitLab Project ID for tracking and integration
+    Type: String
+    Default: '12345678'
+  Provider:
+    Description: Cloud provider
+    Type: String
+    AllowedValues:
+    - aws
+    - azure
+    - gcp
+    Default: aws
 Resources:
   VPC:
     Type: AWS::EC2::VPC
@@ -89,6 +101,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   InternetGateway:
     Type: AWS::EC2::InternetGateway
@@ -108,6 +124,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   InternetGatewayAttachment:
     Type: AWS::EC2::VPCGatewayAttachment
@@ -137,6 +157,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   PublicRouteTable:
     Type: AWS::EC2::RouteTable
@@ -157,6 +181,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   DefaultPublicRoute:
     Type: AWS::EC2::Route
@@ -220,6 +248,10 @@ Resources:
             Value: !Ref Environment
           - Key: ApplicationOwner
             Value: !Ref ApplicationOwner
+          - Key: gitlab-project-id
+            Value: !Ref GitlabProjectId
+          - Key: provider
+            Value: !Ref Provider
 
   ServersLaunchTemplateWebServer:
     Type: AWS::EC2::LaunchTemplate
@@ -266,6 +298,10 @@ Resources:
             Value: !Ref Environment
           - Key: ApplicationOwner
             Value: !Ref ApplicationOwner
+          - Key: gitlab-project-id
+            Value: !Ref GitlabProjectId
+          - Key: provider
+            Value: !Ref Provider
 
   ServersLaunchTemplateAppServer:
     Type: AWS::EC2::LaunchTemplate
@@ -312,6 +348,10 @@ Resources:
             Value: !Ref Environment
           - Key: ApplicationOwner
             Value: !Ref ApplicationOwner
+          - Key: gitlab-project-id
+            Value: !Ref GitlabProjectId
+          - Key: provider
+            Value: !Ref Provider
 
   SampleServersFleetDB:
     DependsOn: AWSBackupDemoInstanceProfile
@@ -345,6 +385,10 @@ Resources:
           Value: !Ref Environment
         - Key: ApplicationOwner
           Value: !Ref ApplicationOwner
+        - Key: gitlab-project-id
+          Value: !Ref GitlabProjectId
+        - Key: provider
+          Value: !Ref Provider
 
   SampleServersFleetAppServers:
     DependsOn: AWSBackupDemoInstanceProfile
@@ -378,6 +422,10 @@ Resources:
           Value: !Ref Environment
         - Key: ApplicationOwner
           Value: !Ref ApplicationOwner
+        - Key: gitlab-project-id
+          Value: !Ref GitlabProjectId
+        - Key: provider
+          Value: !Ref Provider
 
   SampleServersFleetWebServers:
     DependsOn: AWSBackupDemoInstanceProfile
@@ -411,6 +459,10 @@ Resources:
           Value: !Ref Environment
         - Key: ApplicationOwner
           Value: !Ref ApplicationOwner
+        - Key: gitlab-project-id
+          Value: !Ref GitlabProjectId
+        - Key: provider
+          Value: !Ref Provider
 
   InstanceSG:
     Type: AWS::EC2::SecurityGroup

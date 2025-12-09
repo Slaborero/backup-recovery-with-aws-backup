@@ -114,6 +114,18 @@ Parameters:
     Description: Application Name
     Type: String
     Default: Example Application
+  GitlabProjectId:
+    Description: GitLab Project ID for tracking and integration
+    Type: String
+    Default: '12345678'
+  Provider:
+    Description: Cloud provider
+    Type: String
+    AllowedValues:
+    - aws
+    - azure
+    - gcp
+    Default: aws
 
 
 Resources:
@@ -182,6 +194,10 @@ Resources:
         ParameterValue: !Ref ApplicationOwner
       - ParameterKey: CommitId
         ParameterValue: !Ref CommitId
+      - ParameterKey: GitlabProjectId
+        ParameterValue: !Ref GitlabProjectId
+      - ParameterKey: Provider
+        ParameterValue: !Ref Provider
 
       Tags:
       - Key: Application

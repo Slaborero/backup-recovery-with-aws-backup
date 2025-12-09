@@ -139,6 +139,18 @@ Parameters:
     Description: Application Name
     Type: String
     Default: Example Application
+  GitlabProjectId:
+    Description: GitLab Project ID for tracking and integration
+    Type: String
+    Default: '12345678'
+  Provider:
+    Description: Cloud provider
+    Type: String
+    AllowedValues:
+    - aws
+    - azure
+    - gcp
+    Default: aws
 
 Resources:
   rOrgDailyByTagPolicy:
@@ -214,6 +226,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   rOrgWeeklyByTagPolicy:
     Type: AWS::Organizations::Policy
@@ -287,6 +303,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   rOrgMonthly6ByTagPolicy:
     Type: AWS::Organizations::Policy
@@ -361,6 +381,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   rOrgMonthly3mBackUpPolicy:
     Type: AWS::Organizations::Policy
@@ -434,6 +458,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   rOrgMonthly10yBackUpPolicy:
     Type: AWS::Organizations::Policy
@@ -508,6 +536,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   rOrgDefaultDailyBackUpPolicy:
     Type: AWS::Organizations::Policy
@@ -573,6 +605,10 @@ Resources:
         Value: !Ref Environment
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   rOrgDefaultWeeklyBackUpPolicy:
     Type: AWS::Organizations::Policy
