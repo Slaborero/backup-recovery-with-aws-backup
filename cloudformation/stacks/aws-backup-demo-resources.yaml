@@ -63,7 +63,7 @@ Parameters:
     Description: Email address of application owner
     Type: String
     Default: selfserviceservicecatalog@example.com
-  Application:
+  product:
     Description: Application Name
     Type: String
     Default: Example Application
@@ -90,7 +90,7 @@ Resources:
       - Key: Name
         Value: backup-recovery-with-aws-backup-demo-vpc
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -100,7 +100,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -113,7 +113,7 @@ Resources:
       - Key: Name
         Value: backup-recovery-with-aws-backup-demo-igw
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -123,7 +123,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -146,7 +146,7 @@ Resources:
       - Key: Name
         Value: backup-recovery-with-aws-backup-demo-subnet
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -156,7 +156,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -170,7 +170,7 @@ Resources:
       - Key: Name
         Value: backup-recovery-with-aws-backup-demo-route-table
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -180,7 +180,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -237,7 +237,7 @@ Resources:
           - Key: !Ref TagKey
             Value: !Ref TagValue
           - Key: Application
-            Value: !Ref Application
+            Value: !Ref product
           - Key: CommitId
             Value: !Ref CommitId
           - Key: BusinessUnit
@@ -247,7 +247,7 @@ Resources:
           - Key: Environment
             Value: !Ref Environment
           - Key: ApplicationOwner
-            Value: !Ref ApplicationOwner
+            Value: !Ref productOwner
           - Key: gitlab-project-id
             Value: !Ref GitlabProjectId
           - Key: provider
@@ -287,7 +287,7 @@ Resources:
           - Key: !Ref TagKey
             Value: !Ref TagValue
           - Key: Application
-            Value: !Ref Application
+            Value: !Ref product
           - Key: CommitId
             Value: !Ref CommitId
           - Key: BusinessUnit
@@ -297,7 +297,7 @@ Resources:
           - Key: Environment
             Value: !Ref Environment
           - Key: ApplicationOwner
-            Value: !Ref ApplicationOwner
+            Value: !Ref productOwner
           - Key: gitlab-project-id
             Value: !Ref GitlabProjectId
           - Key: provider
@@ -337,7 +337,7 @@ Resources:
           - Key: !Ref TagKey
             Value: !Ref TagValue
           - Key: Application
-            Value: !Ref Application
+            Value: !Ref product
           - Key: CommitId
             Value: !Ref CommitId
           - Key: BusinessUnit
@@ -347,7 +347,7 @@ Resources:
           - Key: Environment
             Value: !Ref Environment
           - Key: ApplicationOwner
-            Value: !Ref ApplicationOwner
+            Value: !Ref productOwner
           - Key: gitlab-project-id
             Value: !Ref GitlabProjectId
           - Key: provider
@@ -374,7 +374,7 @@ Resources:
         - Key: !Ref TagKey
           Value: !Ref TagValue
         - Key: Application
-          Value: !Ref Application
+          Value: !Ref product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -384,7 +384,7 @@ Resources:
         - Key: Environment
           Value: !Ref Environment
         - Key: ApplicationOwner
-          Value: !Ref ApplicationOwner
+          Value: !Ref productOwner
         - Key: gitlab-project-id
           Value: !Ref GitlabProjectId
         - Key: provider
@@ -411,7 +411,7 @@ Resources:
         - Key: !Ref TagKey
           Value: !Ref TagValue
         - Key: Application
-          Value: !Ref Application
+          Value: !Ref product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -421,7 +421,7 @@ Resources:
         - Key: Environment
           Value: !Ref Environment
         - Key: ApplicationOwner
-          Value: !Ref ApplicationOwner
+          Value: !Ref productOwner
         - Key: gitlab-project-id
           Value: !Ref GitlabProjectId
         - Key: provider
@@ -448,7 +448,7 @@ Resources:
         - Key: !Ref TagKey
           Value: !Ref TagValue
         - Key: Application
-          Value: !Ref Application
+          Value: !Ref product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -458,7 +458,7 @@ Resources:
         - Key: Environment
           Value: !Ref Environment
         - Key: ApplicationOwner
-          Value: !Ref ApplicationOwner
+          Value: !Ref productOwner
         - Key: gitlab-project-id
           Value: !Ref GitlabProjectId
         - Key: provider
@@ -473,7 +473,7 @@ Resources:
       - Key: !Ref TagKey
         Value: !Ref TagValue
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -483,7 +483,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
 
   OutboundAll:
     Type: AWS::EC2::SecurityGroupEgress

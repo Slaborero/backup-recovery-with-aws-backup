@@ -135,7 +135,7 @@ Parameters:
     Description: Email address of application owner
     Type: String
     Default: selfserviceservicecatalog@example.com
-  Application:
+  product:
     Description: Application Name
     Type: String
     Default: Example Application
@@ -213,7 +213,7 @@ Resources:
                       - !Ref pBackupTagValue1
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -225,7 +225,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -290,7 +290,7 @@ Resources:
                       - 'backup-weekly'
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -302,7 +302,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -368,7 +368,7 @@ Resources:
                       - !Ref pBackupTagValue2
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -380,7 +380,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -445,7 +445,7 @@ Resources:
                       - 'core-data'
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -457,7 +457,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -523,7 +523,7 @@ Resources:
                       - 'financial-data'
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -535,7 +535,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -592,7 +592,7 @@ Resources:
                       - 'daily'
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -604,7 +604,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -661,7 +661,7 @@ Resources:
                       - 'weekly'
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -673,4 +673,4 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner

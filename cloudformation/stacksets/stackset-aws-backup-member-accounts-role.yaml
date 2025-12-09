@@ -70,7 +70,7 @@ Parameters:
     Description: Email address of application owner
     Type: String
     Default: selfserviceservicecatalog@example.com
-  Application:
+  product:
     Description: Application Name
     Type: String
     Default: Example Application
@@ -125,7 +125,7 @@ Resources:
         ParameterValue: !Ref DeployConfigurationRecorder
 
       - ParameterKey: Application
-        ParameterValue: !Ref Application
+        ParameterValue: !Ref product
       - ParameterKey: BusinessUnit
         ParameterValue: !Ref BusinessUnit
       - ParameterKey: CostCenter
@@ -133,7 +133,7 @@ Resources:
       - ParameterKey: Environment
         ParameterValue: !Ref Environment
       - ParameterKey: ApplicationOwner
-        ParameterValue: !Ref ApplicationOwner
+        ParameterValue: !Ref productOwner
       - ParameterKey: CommitId
         ParameterValue: !Ref CommitId
       - ParameterKey: GitlabProjectId
@@ -142,7 +142,7 @@ Resources:
         ParameterValue: !Ref Provider
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -152,7 +152,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider

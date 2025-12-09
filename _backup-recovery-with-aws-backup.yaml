@@ -123,8 +123,8 @@ Metadata:
         default: "Environment"
       ApplicationOwner:
         default: "Application Owner"
-      Application:
-        default: "Application Name"
+      product:
+        default: "Product Name"
       GitlabProjectId:
         default: "GitLab Project ID"
       Provider:
@@ -325,10 +325,10 @@ Parameters:
     Description: Email address of the application owner
     Type: String
     Default: someone@example.com
-  Application:
-    Description: Application Name
+  product:
+    Description: Product Name
     Type: String
-    Default: Backup and Recovery with AWS Backup
+    Default: Backup
   GitlabProjectId:
     Description: GitLab Project ID for tracking and integration
     Type: String
@@ -474,11 +474,11 @@ Resources:
       Type: String
       Value: !Ref OrgId
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -490,11 +490,11 @@ Resources:
       Type: String
       Value: !Ref DeploymentBucket
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -506,11 +506,11 @@ Resources:
       Type: String
       Value: !Ref SolutionHomeOrgUnit
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -522,11 +522,11 @@ Resources:
       Type: String
       Value: !Ref AWSBackupCentralAccountOU
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -538,11 +538,11 @@ Resources:
       Type: String
       Value: !Ref AWSBackupCentralAccountId
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -554,11 +554,11 @@ Resources:
       Type: String
       Value: !Ref AWSBackupCentralAccountRegion
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -570,11 +570,11 @@ Resources:
       Type: String
       Value: !Sub "arn:aws:backup:${AWSBackupCentralAccountRegion}:${AWSBackupCentralAccountId}:backup-vault:AWSBackupSolutionCentralVault"
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -586,11 +586,11 @@ Resources:
       Type: String
       Value: !Ref RestoreTestSchedule
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -602,11 +602,11 @@ Resources:
       Type: String
       Value: !Ref RestoreSubnetEC2
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -618,11 +618,11 @@ Resources:
       Type: String
       Value: !Ref RestoreSecurityGroupIdEC2
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -634,11 +634,11 @@ Resources:
       Type: String
       Value: !Ref RestoreValidationHoursEC2
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -650,11 +650,11 @@ Resources:
       Type: String
       Value: !Ref SelectionWindowDays
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -666,11 +666,11 @@ Resources:
       Type: String
       Value: !Ref StartWindowHours
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -682,11 +682,11 @@ Resources:
       Type: String
       Value: !Ref TagKey
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -698,11 +698,11 @@ Resources:
       Type: String
       Value: !Ref TagValue
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -714,11 +714,11 @@ Resources:
       Type: String
       Value: !Ref AWS::Region
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -730,11 +730,11 @@ Resources:
       Type: StringList
       Value: !Ref TargetRegions
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -746,11 +746,11 @@ Resources:
       Type: StringList
       Value: !Ref TargetOUs
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -762,11 +762,11 @@ Resources:
       Type: String
       Value: !Ref DeployControl1
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -778,11 +778,11 @@ Resources:
       Type: String
       Value: !Ref AWSBackupDemoEC2InstanceType
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -794,11 +794,11 @@ Resources:
       Type: String
       Value: !Ref AWSBackupDemoVPCCIDR
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -810,11 +810,11 @@ Resources:
       Type: String
       Value: !Ref AWSBackupDemoSubnetCIDR
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -826,11 +826,11 @@ Resources:
       Type: String
       Value: !Ref AWSBackupDemoTagKey
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -842,11 +842,11 @@ Resources:
       Type: String
       Value: !Ref AWSBackupDemoTagValue
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -858,11 +858,11 @@ Resources:
       Type: String
       Value: !Ref DeployControl2
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -874,11 +874,11 @@ Resources:
       Type: String
       Value: !Ref DeployControl3
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -890,11 +890,11 @@ Resources:
       Type: String
       Value: !Ref DeployControl4
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -906,11 +906,11 @@ Resources:
       Type: String
       Value: !Ref DeployControl5
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -922,11 +922,11 @@ Resources:
       Type: String
       Value: !Ref DeployControl6
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -938,11 +938,11 @@ Resources:
       Type: String
       Value: !Ref DeployControl7
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -954,11 +954,11 @@ Resources:
       Type: String
       Value: !Ref DeployControl8
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -970,11 +970,11 @@ Resources:
       Type: String
       Value: !Ref DeployControl9
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -986,11 +986,11 @@ Resources:
       Type: String
       Value: !Ref DeployControl10
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1003,11 +1003,11 @@ Resources:
       Type: String
       Value: !Ref DeployResourceComplianceReportPlan
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1020,11 +1020,11 @@ Resources:
       Type: String
       Value: !Ref DeployControlComplianceReportPlan
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1037,11 +1037,11 @@ Resources:
       Type: String
       Value: !Ref DeployBackupJobReportPlan
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1054,11 +1054,11 @@ Resources:
       Type: String
       Value: !Ref DeployCopyJobReportPlan
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1071,11 +1071,11 @@ Resources:
       Type: String
       Value: !Ref DeployRestoreJobReportPlan
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1087,11 +1087,11 @@ Resources:
       Type: String
       Value: !Ref DeployConfigurationRecorder
       Tags:
-        Application: !Ref Application
+        product: !Ref product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
-        ApplicationOwner: !Ref ApplicationOwner
+        ApplicationOwner: !Ref productOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
 
@@ -1117,7 +1117,7 @@ Resources:
           ExpirationInDays: '90'
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -1125,7 +1125,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -1214,7 +1214,7 @@ Resources:
           Resource: '*'
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -1222,7 +1222,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -1585,7 +1585,7 @@ Resources:
 
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -1593,7 +1593,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -1621,7 +1621,7 @@ Resources:
       TimeoutInMinutes: 10
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -1629,7 +1629,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -1682,7 +1682,7 @@ Resources:
             Effect: Allow
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -1690,7 +1690,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -1790,7 +1790,7 @@ Resources:
             Effect: Allow
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -1798,7 +1798,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider

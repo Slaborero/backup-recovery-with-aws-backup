@@ -33,10 +33,10 @@ Parameters:
     Description: Email address of the application owner.
     Type: String
     Default: someone@example.com
-  Application:
+  product:
     Description: Application Name.
     Type: String
-    Default: Backup and Recovery with AWS Backup
+    Default: Backup
   GitlabProjectId:
     Description: GitLab Project ID for tracking and integration
     Type: String
@@ -79,7 +79,7 @@ Resources:
             Resource: "*"
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -89,7 +89,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider
@@ -164,7 +164,7 @@ Resources:
       Timeout: 120
       Tags:
       - Key: Application
-        Value: !Ref Application
+        Value: !Ref product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -174,7 +174,7 @@ Resources:
       - Key: Environment
         Value: !Ref Environment
       - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+        Value: !Ref productOwner
       - Key: gitlab-project-id
         Value: !Ref GitlabProjectId
       - Key: provider

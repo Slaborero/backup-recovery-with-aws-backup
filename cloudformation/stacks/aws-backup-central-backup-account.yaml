@@ -49,7 +49,7 @@ Parameters:
     Description: Email address of application owner
     Type: String
     Default:  selfserviceservicecatalog@example.com
-  Application:
+  product:
     Description: Application Name
     Type: String
     Default:  Example Application
@@ -133,9 +133,9 @@ Resources:
         - Key: CostCenter
           Value: !Ref CostCenter
         - Key: ApplicationOwner
-          Value: !Ref ApplicationOwner
+          Value: !Ref productOwner
         - Key: Application
-          Value: !Ref Application
+          Value: !Ref product
         - Key: Environment
           Value: !Ref Environment
         - Key: gitlab-project-id
@@ -191,9 +191,9 @@ Resources:
         - Key: CostCenter
           Value: !Ref CostCenter
         - Key: ApplicationOwner
-          Value: !Ref ApplicationOwner
+          Value: !Ref productOwner
         - Key: Application
-          Value: !Ref Application
+          Value: !Ref product
         - Key: Environment
           Value: !Ref Environment
         - Key: gitlab-project-id
