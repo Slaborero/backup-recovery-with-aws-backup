@@ -254,8 +254,8 @@ Resources:
             Value: backup-recovery-with-aws-backup-demo-ec2-web
           - Key: !Ref TagKey
             Value: !Ref TagValue
-          - Key: Application
-            Value: !Ref Application
+          - Key: product
+            Value: !Ref Product
           - Key: CommitId
             Value: !Ref CommitId
           - Key: BusinessUnit
@@ -300,8 +300,8 @@ Resources:
             Value: backup-recovery-with-aws-backup-demo-ec2-app
           - Key: !Ref TagKey
             Value: !Ref TagValue
-          - Key: Application
-            Value: !Ref Application
+          - Key: product
+            Value: !Ref Product
           - Key: CommitId
             Value: !Ref CommitId
           - Key: BusinessUnit
@@ -333,8 +333,8 @@ Resources:
           Value: backup-recovery-with-aws-backup-demo-fleet-db
         - Key: !Ref TagKey
           Value: !Ref TagValue
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -366,8 +366,8 @@ Resources:
           Value: backup-recovery-with-aws-backup-demo-fleet-app
         - Key: !Ref TagKey
           Value: !Ref TagValue
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -399,8 +399,8 @@ Resources:
           Value: backup-recovery-with-aws-backup-demo-fleet-web
         - Key: !Ref TagKey
           Value: !Ref TagValue
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -420,8 +420,8 @@ Resources:
       Tags:
       - Key: !Ref TagKey
         Value: !Ref TagValue
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
