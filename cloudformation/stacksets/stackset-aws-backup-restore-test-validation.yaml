@@ -108,8 +108,8 @@ Resources:
       Parameters:
         - ParameterKey: CommitId
           ParameterValue: !Ref CommitId
-        - ParameterKey: Application
-          ParameterValue: !Ref Application
+        - ParameterKey: Product
+          ParameterValue: !Ref Product
         - ParameterKey: BusinessUnit
           ParameterValue: !Ref BusinessUnit
         - ParameterKey: CostCenter
@@ -119,8 +119,8 @@ Resources:
         - ParameterKey: ApplicationOwner
           ParameterValue: !Ref ApplicationOwner
       Tags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit

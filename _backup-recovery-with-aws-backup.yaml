@@ -50,7 +50,9 @@ Metadata:
       - CostCenter
       - Environment
       - ApplicationOwner
-      - Application
+      - Product
+      - GitlabProjectId
+      - Provider
     - Label:
         default: "AWS Backup Framework Configuration"
       Parameters:
@@ -121,8 +123,12 @@ Metadata:
         default: "Environment"
       ApplicationOwner:
         default: "Application Owner"
-      Application:
-        default: "Application Name"
+      Product:
+        default: "Product Name"
+      GitlabProjectId:
+        default: "GitLab Project ID"
+      Provider:
+        default: "Cloud Provider"
       RestoreTestSchedule:
         default: "Restore Test Schedule (CRON)"
       RestoreSubnetEC2:
@@ -319,10 +325,18 @@ Parameters:
     Description: Email address of the application owner
     Type: String
     Default: someone@example.com
-  Application:
-    Description: Application Name
+  Product:
+    Description: Product Name
     Type: String
-    Default: Backup and Recovery with AWS Backup
+    Default: Backup
+  GitlabProjectId:
+    Description: GitLab Project ID
+    Type: String
+    Default: '12345678'
+  Provider:
+    Description: Cloud Provider
+    Type: String
+    Default: aws
   DeployControl1:
     Description: 'Do you want to evaluates if resources are included in at least one backup plan?'
     Type: String
@@ -456,11 +470,13 @@ Resources:
       Type: String
       Value: !Ref OrgId
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupBucket:
     Type: AWS::SSM::Parameter
@@ -470,11 +486,13 @@ Resources:
       Type: String
       Value: !Ref DeploymentBucket
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupSolutionOrgUnit:
     Type: AWS::SSM::Parameter
@@ -484,11 +502,13 @@ Resources:
       Type: String
       Value: !Ref SolutionHomeOrgUnit
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupCentralAccountOUSSM:
     Type: AWS::SSM::Parameter
@@ -498,11 +518,13 @@ Resources:
       Type: String
       Value: !Ref AWSBackupCentralAccountOU
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupCentralAccountIdSSM:
     Type: AWS::SSM::Parameter
@@ -512,11 +534,13 @@ Resources:
       Type: String
       Value: !Ref AWSBackupCentralAccountId
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupCentralAccountRegionSSM:
     Type: AWS::SSM::Parameter
@@ -526,11 +550,13 @@ Resources:
       Type: String
       Value: !Ref AWSBackupCentralAccountRegion
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupCentralVaultSSM:
     Type: AWS::SSM::Parameter
@@ -540,11 +566,13 @@ Resources:
       Type: String
       Value: !Sub "arn:aws:backup:${AWSBackupCentralAccountRegion}:${AWSBackupCentralAccountId}:backup-vault:AWSBackupSolutionCentralVault"
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   RestoreTestScheduleParameter:
     Type: AWS::SSM::Parameter
@@ -554,11 +582,13 @@ Resources:
       Type: String
       Value: !Ref RestoreTestSchedule
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   RestoreSubnetEC2Parameter:
     Type: AWS::SSM::Parameter
@@ -568,11 +598,13 @@ Resources:
       Type: String
       Value: !Ref RestoreSubnetEC2
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   RestoreSecurityGroupIdEC2Parameter:
     Type: AWS::SSM::Parameter
@@ -582,11 +614,13 @@ Resources:
       Type: String
       Value: !Ref RestoreSecurityGroupIdEC2
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   RestoreValidationHoursEC2Parameter:
     Type: AWS::SSM::Parameter
@@ -596,11 +630,13 @@ Resources:
       Type: String
       Value: !Ref RestoreValidationHoursEC2
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   SelectionWindowDaysParameter:
     Type: AWS::SSM::Parameter
@@ -610,11 +646,13 @@ Resources:
       Type: String
       Value: !Ref SelectionWindowDays
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   StartWindowHoursParameter:
     Type: AWS::SSM::Parameter
@@ -624,11 +662,13 @@ Resources:
       Type: String
       Value: !Ref StartWindowHours
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   TagKeyParameter:
     Type: AWS::SSM::Parameter
@@ -638,11 +678,13 @@ Resources:
       Type: String
       Value: !Ref TagKey
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   TagValueParameter:
     Type: AWS::SSM::Parameter
@@ -652,11 +694,13 @@ Resources:
       Type: String
       Value: !Ref TagValue
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupTargetGlobalRegion:
     Type: AWS::SSM::Parameter
@@ -666,11 +710,13 @@ Resources:
       Type: String
       Value: !Ref AWS::Region
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupTargetRegions:
     Type: AWS::SSM::Parameter
@@ -680,11 +726,13 @@ Resources:
       Type: StringList
       Value: !Ref TargetRegions
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupTargetOUs:
     Type: AWS::SSM::Parameter
@@ -694,11 +742,13 @@ Resources:
       Type: StringList
       Value: !Ref TargetOUs
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl1:
     Type: AWS::SSM::Parameter
@@ -708,11 +758,13 @@ Resources:
       Type: String
       Value: !Ref DeployControl1
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DemoEC2InstanceType:
     Type: AWS::SSM::Parameter
@@ -722,11 +774,13 @@ Resources:
       Type: String
       Value: !Ref AWSBackupDemoEC2InstanceType
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DemoVPCCIDR:
     Type: AWS::SSM::Parameter
@@ -736,11 +790,13 @@ Resources:
       Type: String
       Value: !Ref AWSBackupDemoVPCCIDR
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DemoSubnetCIDR:
     Type: AWS::SSM::Parameter
@@ -750,11 +806,13 @@ Resources:
       Type: String
       Value: !Ref AWSBackupDemoSubnetCIDR
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DemoTagKey:
     Type: AWS::SSM::Parameter
@@ -764,11 +822,13 @@ Resources:
       Type: String
       Value: !Ref AWSBackupDemoTagKey
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DemoTagValue:
     Type: AWS::SSM::Parameter
@@ -778,11 +838,13 @@ Resources:
       Type: String
       Value: !Ref AWSBackupDemoTagValue
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl2:
     Type: AWS::SSM::Parameter
@@ -792,11 +854,13 @@ Resources:
       Type: String
       Value: !Ref DeployControl2
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl3:
     Type: AWS::SSM::Parameter
@@ -806,11 +870,13 @@ Resources:
       Type: String
       Value: !Ref DeployControl3
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl4:
     Type: AWS::SSM::Parameter
@@ -820,11 +886,13 @@ Resources:
       Type: String
       Value: !Ref DeployControl4
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl5:
     Type: AWS::SSM::Parameter
@@ -834,11 +902,13 @@ Resources:
       Type: String
       Value: !Ref DeployControl5
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl6:
     Type: AWS::SSM::Parameter
@@ -848,11 +918,13 @@ Resources:
       Type: String
       Value: !Ref DeployControl6
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl7:
     Type: AWS::SSM::Parameter
@@ -862,11 +934,13 @@ Resources:
       Type: String
       Value: !Ref DeployControl7
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl8:
     Type: AWS::SSM::Parameter
@@ -876,11 +950,13 @@ Resources:
       Type: String
       Value: !Ref DeployControl8
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl9:
     Type: AWS::SSM::Parameter
@@ -890,11 +966,13 @@ Resources:
       Type: String
       Value: !Ref DeployControl9
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   AWSBackupFrameworkControl10:
     Type: AWS::SSM::Parameter
@@ -904,11 +982,13 @@ Resources:
       Type: String
       Value: !Ref DeployControl10
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   ResourceComplianceReportPlan:
     Condition: DeployReportFeatureCondition
@@ -919,11 +999,13 @@ Resources:
       Type: String
       Value: !Ref DeployResourceComplianceReportPlan
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   ControlComplianceReportPlan:
     Condition: DeployReportFeatureCondition
@@ -934,11 +1016,13 @@ Resources:
       Type: String
       Value: !Ref DeployControlComplianceReportPlan
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   BackupJobReportPlan:
     Condition: DeployReportFeatureCondition
@@ -949,11 +1033,13 @@ Resources:
       Type: String
       Value: !Ref DeployBackupJobReportPlan
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   CopyJobReportPlan:
     Condition: DeployReportFeatureCondition
@@ -964,11 +1050,13 @@ Resources:
       Type: String
       Value: !Ref DeployCopyJobReportPlan
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   RestoreJobReportPlan:
     Condition: DeployReportFeatureCondition
@@ -979,11 +1067,13 @@ Resources:
       Type: String
       Value: !Ref DeployRestoreJobReportPlan
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   ConfigurationRecorder:
     Type: AWS::SSM::Parameter
@@ -993,11 +1083,13 @@ Resources:
       Type: String
       Value: !Ref DeployConfigurationRecorder
       Tags:
-        Application: !Ref Application
+        product: !Ref Product
         BusinessUnit: !Ref BusinessUnit
         CostCenter: !Ref CostCenter
         Environment: !Ref Environment
         ApplicationOwner: !Ref ApplicationOwner
+        gitlab-project-id: !Ref GitlabProjectId
+        provider: !Ref Provider
 
   DeploymentBucket:
     Type: "AWS::S3::Bucket"
@@ -1019,6 +1111,21 @@ Resources:
         - Id: DeleteRule
           Status: Enabled
           ExpirationInDays: '90'
+      Tags:
+      - Key: product
+        Value: !Ref Product
+      - Key: BusinessUnit
+        Value: !Ref BusinessUnit
+      - Key: CostCenter
+        Value: !Ref CostCenter
+      - Key: Environment
+        Value: !Ref Environment
+      - Key: ApplicationOwner
+        Value: !Ref ApplicationOwner
+      - Key: gitlab-project-id
+        Value: !Ref GitlabProjectId
+      - Key: provider
+        Value: !Ref Provider
 
   DeploymentBucketPolicy:
     Type: "AWS::S3::BucketPolicy"
@@ -1102,8 +1209,8 @@ Resources:
           Action: 'kms:*'
           Resource: '*'
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -1469,8 +1576,8 @@ Resources:
             Effect: Allow
 
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -1501,8 +1608,8 @@ Resources:
         BuildSpec: codebuild/ValidateTemplates/buildspec-cfnnag.yml
       TimeoutInMinutes: 10
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter
@@ -1558,8 +1665,8 @@ Resources:
             Resource: !GetAtt CodePipelineKMSKey.Arn
             Effect: Allow
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: BusinessUnit
         Value: !Ref BusinessUnit
       - Key: CostCenter

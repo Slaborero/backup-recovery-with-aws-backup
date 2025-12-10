@@ -63,10 +63,10 @@ Parameters:
     Description: Email address of application owner
     Type: String
     Default: selfserviceservicecatalog@example.com
-  Application:
-    Description: Application Name
+  Product:
+    Description: Product Name
     Type: String
-    Default: Example Application
+    Default: Backup
 Resources:
   VPC:
     Type: AWS::EC2::VPC
@@ -77,8 +77,8 @@ Resources:
       Tags:
       - Key: Name
         Value: backup-recovery-with-aws-backup-demo-vpc
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -96,8 +96,8 @@ Resources:
       Tags:
       - Key: Name
         Value: backup-recovery-with-aws-backup-demo-igw
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -125,8 +125,8 @@ Resources:
       Tags:
       - Key: Name
         Value: backup-recovery-with-aws-backup-demo-subnet
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -145,8 +145,8 @@ Resources:
       Tags:
       - Key: Name
         Value: backup-recovery-with-aws-backup-demo-route-table
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -208,8 +208,8 @@ Resources:
             Value: backup-recovery-with-aws-backup-demo-ec2-db
           - Key: !Ref TagKey
             Value: !Ref TagValue
-          - Key: Application
-            Value: !Ref Application
+          - Key: product
+            Value: !Ref Product
           - Key: CommitId
             Value: !Ref CommitId
           - Key: BusinessUnit

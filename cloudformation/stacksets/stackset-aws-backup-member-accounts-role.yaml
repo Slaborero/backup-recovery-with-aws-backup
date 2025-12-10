@@ -112,8 +112,8 @@ Resources:
       - ParameterKey: DeployConfigurationRecorder
         ParameterValue: !Ref DeployConfigurationRecorder
 
-      - ParameterKey: Application
-        ParameterValue: !Ref Application
+      - ParameterKey: Product
+        ParameterValue: !Ref Product
       - ParameterKey: BusinessUnit
         ParameterValue: !Ref BusinessUnit
       - ParameterKey: CostCenter
@@ -125,8 +125,8 @@ Resources:
       - ParameterKey: CommitId
         ParameterValue: !Ref CommitId
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit

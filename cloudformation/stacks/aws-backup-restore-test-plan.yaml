@@ -69,10 +69,10 @@ Parameters:
     Description: Email address of the application owner.
     Type: String
     Default: someone@example.com
-  Application:
-    Description: Application Name.
+  Product:
+    Description: Product Name.
     Type: String
-    Default: Backup and Recovery with AWS Backup
+    Default: Backup
 
 Resources:
   AWSBackupRestoreTestingRole:
@@ -118,8 +118,8 @@ Resources:
                   StringEquals:
                     iam:PassedToService: backup.amazonaws.com
       Tags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -148,8 +148,8 @@ Resources:
       # ScheduleStatus: ACTIVE
       StartWindowHours: !Ref StartWindowHours
       Tags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: BusinessUnit
           Value: !Ref BusinessUnit
         - Key: CommitId

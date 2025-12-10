@@ -135,10 +135,10 @@ Parameters:
     Description: Email address of application owner
     Type: String
     Default: selfserviceservicecatalog@example.com
-  Application:
-    Description: Application Name
+  Product:
+    Description: Product Name
     Type: String
-    Default: Example Application
+    Default: Backup
 
 Resources:
   rOrgDailyByTagPolicy:
@@ -200,8 +200,8 @@ Resources:
                       "@@assign":
                       - !Ref pBackupTagValue1
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -273,8 +273,8 @@ Resources:
                       - 'code-data'
                       - 'backup-weekly'
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -347,8 +347,8 @@ Resources:
                       "@@assign":
                       - !Ref pBackupTagValue2
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -420,8 +420,8 @@ Resources:
                       - 'audit-logs'
                       - 'core-data'
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -494,8 +494,8 @@ Resources:
                       - 'client-data'
                       - 'financial-data'
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -559,8 +559,8 @@ Resources:
                       "@@assign":
                       - 'daily'
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
@@ -624,8 +624,8 @@ Resources:
                       "@@assign":
                       - 'weekly'
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId

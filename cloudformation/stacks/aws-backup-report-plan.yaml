@@ -66,10 +66,10 @@ Parameters:
     Description: Email address of application owner
     Type: String
     Default: selfserviceservicecatalog@example.com
-  Application:
-    Description: Application Name
+  Product:
+    Description: Product Name
     Type: String
-    Default: Example Application
+    Default: Backup
 
 Conditions:
   ResourceComplianceReportPlanCondition: !Equals [!Ref DeployResourceComplianceReportPlan, "true"]
@@ -88,8 +88,8 @@ Resources:
         - ServerSideEncryptionByDefault:
             SSEAlgorithm: AES256
       Tags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -138,8 +138,8 @@ Resources:
         - "*"
         OrganizationUnits: !Ref OrganizationUnits
       ReportPlanTags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -169,8 +169,8 @@ Resources:
         - "*"
         OrganizationUnits: !Ref OrganizationUnits
       ReportPlanTags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -200,8 +200,8 @@ Resources:
         - "*"
         OrganizationUnits: !Ref OrganizationUnits
       ReportPlanTags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -231,8 +231,8 @@ Resources:
         - "*"
         OrganizationUnits: !Ref OrganizationUnits
       ReportPlanTags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit
@@ -262,8 +262,8 @@ Resources:
         - "*"
         OrganizationUnits: !Ref OrganizationUnits
       ReportPlanTags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit

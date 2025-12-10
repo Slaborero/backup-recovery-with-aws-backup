@@ -158,8 +158,8 @@ Resources:
       - ParameterKey: DBServerCount
         ParameterValue: !Ref DBServerCount
 
-      - ParameterKey: Application
-        ParameterValue: !Ref Application
+      - ParameterKey: Product
+        ParameterValue: !Ref Product
       - ParameterKey: CommitId
         ParameterValue: !Ref CommitId
       - ParameterKey: BusinessUnit
@@ -172,8 +172,8 @@ Resources:
         ParameterValue: !Ref ApplicationOwner
 
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit

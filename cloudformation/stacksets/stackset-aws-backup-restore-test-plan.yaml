@@ -178,8 +178,8 @@ Resources:
           ParameterKey: TagValue
           ParameterValue: !Ref TagValue
 
-        - ParameterKey: Application
-          ParameterValue: !Ref Application
+        - ParameterKey: Product
+          ParameterValue: !Ref Product
         - ParameterKey: CommitId
           ParameterValue: !Ref CommitId
         - ParameterKey: BusinessUnit
@@ -191,8 +191,8 @@ Resources:
         - ParameterKey: ApplicationOwner
           ParameterValue: !Ref ApplicationOwner
       Tags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: CommitId
           Value: !Ref CommitId
         - Key: BusinessUnit

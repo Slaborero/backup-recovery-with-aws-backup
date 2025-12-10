@@ -83,10 +83,10 @@ Parameters:
     Description: Email address of application owner
     Type: String
     Default: selfserviceservicecatalog@example.com
-  Application:
-    Description: Application Name
+  Product:
+    Description: Product Name
     Type: String
-    Default: Example Application
+    Default: Backup
 
 Conditions:
   DeployControl1Condition: !Equals [ !Ref DeployControl1, "true" ]
@@ -112,8 +112,8 @@ Resources:
         - ServerSideEncryptionByDefault:
             SSEAlgorithm: AES256
       Tags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit
@@ -280,8 +280,8 @@ Resources:
             ParameterValue: '720'
         - !Ref "AWS::NoValue"
       FrameworkTags:
-      - Key: Application
-        Value: !Ref Application
+      - Key: product
+        Value: !Ref Product
       - Key: CommitId
         Value: !Ref CommitId
       - Key: BusinessUnit

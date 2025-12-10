@@ -49,10 +49,10 @@ Parameters:
     Description: Email address of application owner
     Type: String
     Default: selfserviceservicecatalog@example.com
-  Application:
-    Description: Application Name
+  Product:
+    Description: Product Name
     Type: String
-    Default: Example Application
+    Default: Backup
 
 Resources:
   DelegateBackupPolicyMgmt:
@@ -115,8 +115,8 @@ Resources:
                 organizations:PolicyType: BACKUP_POLICY
 
       Tags:
-        - Key: Application
-          Value: !Ref Application
+        - Key: product
+          Value: !Ref Product
         - Key: BusinessUnit
           Value: !Ref BusinessUnit
         - Key: CostCenter
