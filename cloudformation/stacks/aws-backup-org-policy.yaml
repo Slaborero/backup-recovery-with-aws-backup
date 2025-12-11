@@ -163,7 +163,7 @@ Resources:
                     "@@assign": '1200'
                   lifecycle:
                     delete_after_days:
-                      "@@assign": '35'
+                      "@@assign": '7'
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   recovery_point_tags:
@@ -172,15 +172,6 @@ Resources:
                         "@@assign": !Ref pTagKey
                       tag_value:
                         "@@assign": !Ref pTagValue
-                  copy_actions:
-                    # Currently this must be hardcoded since [AWS Backup Policy syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup_syntax.html#backup-policy-syntax-reference) requires the name of this key to be the same as the target.
-                    # <Replace with value from pCentralBackupVaultArn>:
-                    arn:aws:backup:us-east-1:129654119448:backup-vault:AWSBackupSolutionCentralVault:
-                      target_backup_vault_arn:
-                        "@@assign": !Ref pCentralBackupVaultArn
-                      lifecycle:
-                        delete_after_days:
-                          "@@assign": '35'
               backup_plan_tags:
                 project:
                   tag_key:
@@ -198,7 +189,14 @@ Resources:
                       "@@assign": !Ref pBackupTagKey1
                     tag_value:
                       "@@assign":
-                      - !Ref pBackupTagValue1
+                      - transactions-regulated
+                      - client-data
+                      - financial-data
+                      - regulated-logs
+                      - autit-logs
+                      - code-data
+                      - app-object
+                      - apps-logs
       Tags:
       - Key: product
         Value: !Ref Product
@@ -237,7 +235,7 @@ Resources:
                     "@@assign": '1200'
                   lifecycle:
                     delete_after_days:
-                      "@@assign": '35'
+                      "@@assign": '30'
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   recovery_point_tags:
@@ -246,13 +244,6 @@ Resources:
                         "@@assign": !Ref pTagKey
                       tag_value:
                         "@@assign": !Ref pTagValue
-                  copy_actions:
-                    arn:aws:backup:us-east-1:129654119448:backup-vault:AWSBackupSolutionCentralVault:
-                      target_backup_vault_arn:
-                        "@@assign": !Ref pCentralBackupVaultArn
-                      lifecycle:
-                        delete_after_days:
-                          "@@assign": '35'
               backup_plan_tags:
                 project:
                   tag_key:
@@ -270,8 +261,16 @@ Resources:
                       "@@assign": !Ref pBackupTagKey3
                     tag_value:
                       "@@assign":
-                      - 'code-data'
-                      - 'backup-weekly'
+                      - regulated-logs
+                      - transactions-regulated
+                      - financial-data
+                      - backup-weekly
+                      - autit-logs
+                      - code-data
+                      - client-data
+                      - core-data
+                      - app-object
+                      - backup-w-m
       Tags:
       - Key: product
         Value: !Ref Product
@@ -310,7 +309,9 @@ Resources:
                     "@@assign": '1200'
                   lifecycle:
                     delete_after_days:
-                      "@@assign": '366'
+                      "@@assign": '180'
+                    move_to_cold_storage_after_days:
+                      "@@assign": '90'
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   recovery_point_tags:
@@ -319,15 +320,6 @@ Resources:
                         "@@assign": !Ref pTagKey
                       tag_value:
                         "@@assign": !Ref pTagValue
-                  copy_actions:
-                    # Currently this must be hardcoded since [AWS Backup Policy syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup_syntax.html#backup-policy-syntax-reference) requires the name of this key to be the same as the target.
-                    # <Replace with value from pCentralBackupVaultArn>:
-                    arn:aws:backup:us-east-1:129654119448:backup-vault:AWSBackupSolutionCentralVault:
-                      target_backup_vault_arn:
-                        "@@assign": !Ref pCentralBackupVaultArn
-                      lifecycle:
-                        delete_after_days:
-                          "@@assign": '366'
               backup_plan_tags:
                 project:
                   tag_key:
@@ -338,14 +330,15 @@ Resources:
                 "@@append": !Ref pRegions
               selections:
                 tags:
-                  OrgDailyBackupSelection:
+                  OrgMonthly6BackupSelection:
                     iam_role_arn:
                       "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
                     tag_key:
                       "@@assign": !Ref pBackupTagKey2
                     tag_value:
                       "@@assign":
-                      - !Ref pBackupTagValue2
+                      - regulated-logs
+                      - backup-monthly-6
       Tags:
       - Key: product
         Value: !Ref Product
@@ -393,13 +386,6 @@ Resources:
                         "@@assign": !Ref pTagKey
                       tag_value:
                         "@@assign": !Ref pTagValue
-                  copy_actions:
-                    arn:aws:backup:us-east-1:129654119448:backup-vault:AWSBackupSolutionCentralVault:
-                      target_backup_vault_arn:
-                        "@@assign": !Ref pCentralBackupVaultArn
-                      lifecycle:
-                        delete_after_days:
-                          "@@assign": '90'
               backup_plan_tags:
                 project:
                   tag_key:
@@ -417,8 +403,10 @@ Resources:
                       "@@assign": !Ref pBackupTagKey4
                     tag_value:
                       "@@assign":
-                      - 'audit-logs'
-                      - 'core-data'
+                      - backup-w-m
+                      - core-data
+                      - backup-monthly-3
+                      - autit-logs
       Tags:
       - Key: product
         Value: !Ref Product
@@ -457,7 +445,7 @@ Resources:
                     "@@assign": '1200'
                   lifecycle:
                     delete_after_days:
-                      "@@assign": '3650'
+                      "@@assign": '30'
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   recovery_point_tags:
@@ -473,6 +461,8 @@ Resources:
                       lifecycle:
                         delete_after_days:
                           "@@assign": '3650'
+                        move_to_cold_storage_after_days:
+                          "@@assign": '90'
               backup_plan_tags:
                 project:
                   tag_key:
