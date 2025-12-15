@@ -19,8 +19,8 @@ Parameters:
       The AWS Organizations root ID starts with r-, followed by alphanumeric characters and hyphens, with a total length of 4 to 32 characters.
 
   # Parameters for tagging
-  BusinessUnit:
-    Description: Business Unit Name
+  SquadName:
+    Description: Squad Name
     Type: String
     MinLength: '1'
     MaxLength: '255'
@@ -117,7 +117,7 @@ Resources:
       Tags:
         - Key: product
           Value: !Ref Product
-        - Key: BusinessUnit
+        - Key: squad-name
           Value: !Ref BusinessUnit
         - Key: CostCenter
           Value: !Ref CostCenter

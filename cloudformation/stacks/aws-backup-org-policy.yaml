@@ -105,8 +105,8 @@ Parameters:
   CommitId:
     Description: The commit id for the change
     Type: String
-  BusinessUnit:
-    Description: Business Unit Name
+  SquadName:
+    Description: Squad Name
     Type: String
     MinLength: '1'
     MaxLength: '255'
@@ -204,7 +204,7 @@ Resources:
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
         #   Value: !Ref CommitId
-      - Key: BusinessUnit
+      - Key: squad-name
         Value: !Ref BusinessUnit
       - Key: CostCenter
         Value: !Ref CostCenter
@@ -278,7 +278,7 @@ Resources:
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
         #   Value: !Ref CommitId
-      - Key: BusinessUnit
+      - Key: squad-name
         Value: !Ref BusinessUnit
       - Key: CostCenter
         Value: !Ref CostCenter
@@ -346,7 +346,7 @@ Resources:
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
         #   Value: !Ref CommitId
-      - Key: BusinessUnit
+      - Key: squad-name
         Value: !Ref BusinessUnit
       - Key: CostCenter
         Value: !Ref CostCenter
@@ -414,7 +414,7 @@ Resources:
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
         #   Value: !Ref CommitId
-      - Key: BusinessUnit
+      - Key: squad-name
         Value: !Ref BusinessUnit
       - Key: CostCenter
         Value: !Ref CostCenter
@@ -490,7 +490,7 @@ Resources:
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
         #   Value: !Ref CommitId
-      - Key: BusinessUnit
+      - Key: squad-name
         Value: !Ref BusinessUnit
       - Key: CostCenter
         Value: !Ref CostCenter
@@ -555,7 +555,7 @@ Resources:
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
         #   Value: !Ref CommitId
-      - Key: BusinessUnit
+      - Key: squad-name
         Value: !Ref BusinessUnit
       - Key: CostCenter
         Value: !Ref CostCenter
@@ -620,7 +620,7 @@ Resources:
       # CloudFormation lacks permissions to update existing policies, causing deployment failures
       # - Key: CommitId
         #   Value: !Ref CommitId
-      - Key: BusinessUnit
+      - Key: squad-name
         Value: !Ref BusinessUnit
       - Key: CostCenter
         Value: !Ref CostCenter

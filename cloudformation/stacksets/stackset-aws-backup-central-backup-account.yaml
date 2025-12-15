@@ -40,8 +40,8 @@ Parameters:
   CommitId:
     Description: The commit id for the change
     Type: String
-  BusinessUnit:
-    Description: Business Unit Name
+  SquadName:
+    Description: Squad Name
     Type: String
     MinLength: '1'
     MaxLength: '255'
@@ -130,7 +130,7 @@ Resources:
       Tags:
         - Key: product
           Value: !Ref Product
-        - Key: BusinessUnit
+        - Key: squad-name
           Value: !Ref BusinessUnit
         - Key: CommitId
           Value: !Ref CommitId

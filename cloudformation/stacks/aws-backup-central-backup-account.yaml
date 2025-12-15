@@ -19,8 +19,8 @@ Parameters:
   CommitId:
     Description: The commit id for the change
     Type: String
-  BusinessUnit:
-    Description: Business Unit Name
+  SquadName:
+    Description: Squad Name
     Type: String
     MinLength: '1'
     MaxLength: '255'
@@ -114,7 +114,7 @@ Resources:
               ForAnyValue:StringLike:
                 aws:PrincipalOrgPaths: !Sub "${pOrganizationId}/*"
       Tags:
-        - Key: BusinessUnit
+        - Key: squad-name
           Value: !Ref BusinessUnit
         - Key: CommitId
           Value: !Ref CommitId
@@ -168,7 +168,7 @@ Resources:
         - arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup
         - arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForRestores
       Tags:
-        - Key: BusinessUnit
+        - Key: squad-name
           Value: !Ref BusinessUnit
         - Key: CommitId
           Value: !Ref CommitId
