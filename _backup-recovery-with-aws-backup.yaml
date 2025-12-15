@@ -46,7 +46,7 @@ Metadata:
     - Label:
         default: "Customer Specific Tags"
       Parameters:
-      - BusinessUnit
+      - SquadName
       - CostCenter
       - Environment
       - ApplicationOwner
@@ -1109,8 +1109,8 @@ Resources:
       Tags:
       - Key: product
         Value: !Ref Product
-      - Key: BusinessUnit
-        Value: !Ref BusinessUnit
+      - Key: squad-name
+        Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
       - Key: Environment
@@ -1206,8 +1206,8 @@ Resources:
       Tags:
       - Key: product
         Value: !Ref Product
-      - Key: BusinessUnit
-        Value: !Ref BusinessUnit
+      - Key: squad-name
+        Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
       - Key: Environment
@@ -1573,8 +1573,8 @@ Resources:
       Tags:
       - Key: product
         Value: !Ref Product
-      - Key: BusinessUnit
-        Value: !Ref BusinessUnit
+      - Key: squad-name
+        Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
       - Key: Environment
@@ -1605,8 +1605,8 @@ Resources:
       Tags:
       - Key: product
         Value: !Ref Product
-      - Key: BusinessUnit
-        Value: !Ref BusinessUnit
+      - Key: squad-name
+        Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
       - Key: Environment
@@ -1662,8 +1662,8 @@ Resources:
       Tags:
       - Key: product
         Value: !Ref Product
-      - Key: BusinessUnit
-        Value: !Ref BusinessUnit
+      - Key: squad-name
+        Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
       - Key: Environment

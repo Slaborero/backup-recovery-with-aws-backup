@@ -144,7 +144,7 @@ Resources:
       - Key: CommitId
         Value: !Ref CommitId
       - Key: squad-name
-        Value: !Ref BusinessUnit
+        Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
       - Key: Environment

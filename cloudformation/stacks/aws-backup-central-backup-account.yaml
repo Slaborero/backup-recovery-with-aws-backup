@@ -115,7 +115,7 @@ Resources:
                 aws:PrincipalOrgPaths: !Sub "${pOrganizationId}/*"
       Tags:
         - Key: squad-name
-          Value: !Ref BusinessUnit
+          Value: !Ref SquadName
         - Key: CommitId
           Value: !Ref CommitId
         - Key: CostCenter
@@ -169,7 +169,7 @@ Resources:
         - arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForRestores
       Tags:
         - Key: squad-name
-          Value: !Ref BusinessUnit
+          Value: !Ref SquadName
         - Key: CommitId
           Value: !Ref CommitId
         - Key: CostCenter

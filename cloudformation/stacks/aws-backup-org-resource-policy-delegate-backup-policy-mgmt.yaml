@@ -118,7 +118,7 @@ Resources:
         - Key: product
           Value: !Ref Product
         - Key: squad-name
-          Value: !Ref BusinessUnit
+          Value: !Ref SquadName
         - Key: CostCenter
           Value: !Ref CostCenter
         - Key: Environment

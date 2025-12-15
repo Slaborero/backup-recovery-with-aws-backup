@@ -119,8 +119,8 @@ Resources:
           ParameterValue: !Ref Product
         - ParameterKey: CommitId
           ParameterValue: !Ref CommitId
-        - ParameterKey: BusinessUnit
-          ParameterValue: !Ref BusinessUnit
+        - ParameterKey: SquadName
+          ParameterValue: !Ref SquadName
         - ParameterKey: CostCenter
           ParameterValue: !Ref CostCenter
         - ParameterKey: Environment
@@ -131,7 +131,7 @@ Resources:
         - Key: product
           Value: !Ref Product
         - Key: squad-name
-          Value: !Ref BusinessUnit
+          Value: !Ref SquadName
         - Key: CommitId
           Value: !Ref CommitId
         - Key: CostCenter
