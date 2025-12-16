@@ -97,7 +97,7 @@ Parameters:
     MinLength: '1'
     MaxLength: '255'
     Default: '00000'
-  Environment:
+  env:
     Description: Environment
     Type: String
     AllowedValues:
@@ -176,8 +176,8 @@ Resources:
         ParameterValue: !Ref SquadName
       - ParameterKey: CostCenter
         ParameterValue: !Ref CostCenter
-      - ParameterKey: Environment
-        ParameterValue: !Ref Environment
+      - ParameterKey: env
+        ParameterValue: !Ref env
       - ParameterKey: ApplicationOwner
         ParameterValue: !Ref ApplicationOwner
       - ParameterKey: CommitId
@@ -192,7 +192,7 @@ Resources:
         Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
-      - Key: Environment
-        Value: !Ref Environment
+      - Key: env
+        Value: !Ref env
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner

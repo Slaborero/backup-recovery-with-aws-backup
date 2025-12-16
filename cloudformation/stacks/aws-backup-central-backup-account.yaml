@@ -36,7 +36,7 @@ Parameters:
     MinLength: '1'
     MaxLength: '255'
     Default:  '00000'
-  Environment:
+  env:
     Description: Environment
     Type: String
     AllowedValues:
@@ -124,8 +124,8 @@ Resources:
           Value: !Ref ApplicationOwner
         - Key: product
           Value: !Ref Product
-        - Key: Environment
-          Value: !Ref Environment
+        - Key: env
+          Value: !Ref env
 
   rCentralAccountBackupKeyAlias:
     Type: AWS::KMS::Alias
@@ -178,8 +178,8 @@ Resources:
           Value: !Ref ApplicationOwner
         - Key: product
           Value: !Ref Product
-        - Key: Environment
-          Value: !Ref Environment
+        - Key: env
+          Value: !Ref env
 
 Outputs:
   oCentralBackupVault:

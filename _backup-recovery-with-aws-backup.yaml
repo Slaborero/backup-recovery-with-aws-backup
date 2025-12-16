@@ -48,7 +48,7 @@ Metadata:
       Parameters:
       - SquadName
       - CostCenter
-      - Environment
+      - env
       - ApplicationOwner
       - Product
       - GitlabProjectId
@@ -119,7 +119,7 @@ Metadata:
         default: "Squad Name"
       CostCenter:
         default: "Cost Center"
-      Environment:
+      env:
         default: "Environment"
       ApplicationOwner:
         default: "Application Owner"
@@ -307,7 +307,7 @@ Parameters:
     MinLength: '1'
     MaxLength: '255'
     Default: '00000'
-  Environment:
+  env:
     Description: Environment
     Type: String
     AllowedValues:
@@ -315,7 +315,7 @@ Parameters:
     - qa
     - production
     ConstraintDescription: Must be a valid environment
-    Default: development
+    Default: prd
   ApplicationOwner:
     Description: Email address of the application owner
     Type: String
@@ -468,7 +468,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -484,7 +484,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -500,7 +500,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -516,7 +516,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -532,7 +532,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -548,7 +548,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -564,7 +564,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -580,7 +580,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -596,7 +596,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -612,7 +612,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -628,7 +628,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -644,7 +644,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -660,7 +660,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -676,7 +676,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -692,7 +692,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -708,7 +708,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -724,7 +724,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -740,7 +740,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -756,7 +756,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -772,7 +772,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -788,7 +788,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -804,7 +804,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -820,7 +820,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -836,7 +836,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -852,7 +852,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -868,7 +868,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -884,7 +884,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -900,7 +900,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -916,7 +916,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -932,7 +932,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -948,7 +948,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -964,7 +964,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -980,7 +980,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -997,7 +997,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -1014,7 +1014,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -1031,7 +1031,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -1048,7 +1048,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -1065,7 +1065,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -1081,7 +1081,7 @@ Resources:
         product: !Ref Product
         squad-name: !Ref SquadName
         CostCenter: !Ref CostCenter
-        Environment: !Ref Environment
+        env: !Ref env
         ApplicationOwner: !Ref ApplicationOwner
         gitlab-project-id: !Ref GitlabProjectId
         provider: !Ref Provider
@@ -1113,8 +1113,8 @@ Resources:
         Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
-      - Key: Environment
-        Value: !Ref Environment
+      - Key: env
+        Value: !Ref env
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
       - Key: gitlab-project-id
@@ -1210,8 +1210,8 @@ Resources:
         Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
-      - Key: Environment
-        Value: !Ref Environment
+      - Key: env
+        Value: !Ref env
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
 
@@ -1577,8 +1577,8 @@ Resources:
         Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
-      - Key: Environment
-        Value: !Ref Environment
+      - Key: env
+        Value: !Ref env
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
 
@@ -1594,7 +1594,7 @@ Resources:
       Artifacts:
         Type: CODEPIPELINE
       EncryptionKey: !GetAtt CodePipelineKMSKey.Arn
-      Environment:
+      env:
         Type: LINUX_CONTAINER
         ComputeType: BUILD_GENERAL1_SMALL
         Image: aws/codebuild/amazonlinux2-x86_64-standard:3.0
@@ -1609,8 +1609,8 @@ Resources:
         Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
-      - Key: Environment
-        Value: !Ref Environment
+      - Key: env
+        Value: !Ref env
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
 
@@ -1666,8 +1666,8 @@ Resources:
         Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
-      - Key: Environment
-        Value: !Ref Environment
+      - Key: env
+        Value: !Ref env
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
 

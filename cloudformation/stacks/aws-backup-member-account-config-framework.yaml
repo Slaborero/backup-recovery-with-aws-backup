@@ -70,7 +70,7 @@ Parameters:
     MinLength: '1'
     MaxLength: '255'
     Default: '00000'
-  Environment:
+  env:
     Description: Environment
     Type: String
     AllowedValues:
@@ -120,8 +120,8 @@ Resources:
         Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
-      - Key: Environment
-        Value: !Ref Environment
+      - Key: env
+        Value: !Ref env
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
 
@@ -288,7 +288,7 @@ Resources:
         Value: !Ref SquadName
       - Key: CostCenter
         Value: !Ref CostCenter
-      - Key: Environment
-        Value: !Ref Environment
+      - Key: env
+        Value: !Ref env
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
