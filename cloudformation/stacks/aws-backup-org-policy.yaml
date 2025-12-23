@@ -4,7 +4,7 @@ Transform:
 Description: This template deploys AWS Organization Backup Policies to manage
   backups at an organization level. It should be deployed in the AWS
   Organizations management account or from an AWS Account with delegated
-  Administrator permissions.
+  Administrator permissions. Updated with S3 backup support.
 
 Parameters:
   pOrgBackupTargetOUs:
