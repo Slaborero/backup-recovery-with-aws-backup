@@ -311,9 +311,11 @@ Parameters:
     Description: Environment
     Type: String
     AllowedValues:
-    - development
-    - qa
-    - production
+    - dev
+    - qas
+    - sta
+    - sbx
+    - prd
     ConstraintDescription: Must be a valid environment
     Default: prd
   ApplicationOwner:
