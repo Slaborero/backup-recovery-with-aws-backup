@@ -237,12 +237,15 @@ Parameters:
   AWSBackupCentralAccountOU:
     Type: String
     Description: The AWS OU for the central account that will be the secondary store for all accounts / regions. Secondary copies and restore testing will be in the selected account within this OU.
+    Default: "ou-clmc-nl76dfec"
   AWSBackupCentralAccountId:
     Type: String
     Description: The AWS Account ID for the central account that will be the secondary store for all AWS Backups. Secondary copies and restore testing will be in this account.
+    Default: "557270420251"
   AWSBackupCentralAccountRegion:
     Type: String
     Description: The region for the central account that will be the secondary store for all AWS Backups. Secondary copies and restore testing will be in this region.
+    Default: "us-east-1"
 
   RestoreTestSchedule:
     Description: The CRON job to initiate restore test plan. For example, cron(0 7 ? * 6 *) weekly on Saturday, at 07:00 UTC.

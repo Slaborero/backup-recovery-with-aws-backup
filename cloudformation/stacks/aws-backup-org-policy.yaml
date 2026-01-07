@@ -455,7 +455,7 @@ Resources:
                       tag_value:
                         "@@assign": !Ref pTagValue
                   copy_actions:
-                    arn:aws:backup:us-east-1:129654119448:backup-vault:AWSBackupSolutionCentralVault:
+                    arn:aws:backup:us-east-1:557270420251:backup-vault:AWSBackupSolutionCentralVault:
                       target_backup_vault_arn:
                         "@@assign": !Ref pCentralBackupVaultArn
                       lifecycle:
