@@ -233,6 +233,7 @@ Parameters:
   TargetOUs:
     Description: A comma separated list of OUs whose accounts you want to configure for backup
     Type: String
+    Default: "r-clmc"
 
   AWSBackupCentralAccountOU:
     Type: String
