@@ -504,7 +504,7 @@ Resources:
     Properties:
       Name: default-daily
       Description: >-
-        BackupPolicy for Daily Backup (default for resources without specific tags)
+        BackupPolicy for Daily Backup (safety net for all resources by type)
       Type: BACKUP_POLICY
       TargetIds: !Ref pOrgBackupTargetOUs
       Content:
@@ -539,15 +539,19 @@ Resources:
               regions:
                 "@@append": !Ref pRegions
               selections:
-                tags:
+                resource_types:
                   OrgDefaultDailyBackupSelection:
                     iam_role_arn:
                       "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
-                    tag_key:
-                      "@@assign": 'backup-default'
-                    tag_value:
+                    resource_types:
                       "@@assign":
-                      - 'daily'
+                      - 'EBS'
+                      - 'EC2'
+                      - 'RDS'
+                      - 'DynamoDB'
+                      - 'EFS'
+                      - 'FSx'
+                      - 'S3'
       Tags:
       - Key: product
         Value: !Ref Product
@@ -569,7 +573,7 @@ Resources:
     Properties:
       Name: default-weekly
       Description: >-
-        BackupPolicy for Weekly Backup (default for resources without specific tags)
+        BackupPolicy for Weekly Backup (safety net for all resources by type)
       Type: BACKUP_POLICY
       TargetIds: !Ref pOrgBackupTargetOUs
       Content:
@@ -604,15 +608,19 @@ Resources:
               regions:
                 "@@append": !Ref pRegions
               selections:
-                tags:
+                resource_types:
                   OrgDefaultWeeklyBackupSelection:
                     iam_role_arn:
                       "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
-                    tag_key:
-                      "@@assign": 'backup-default'
-                    tag_value:
+                    resource_types:
                       "@@assign":
-                      - 'weekly'
+                      - 'EBS'
+                      - 'EC2'
+                      - 'RDS'
+                      - 'DynamoDB'
+                      - 'EFS'
+                      - 'FSx'
+                      - 'S3'
       Tags:
       - Key: product
         Value: !Ref Product
