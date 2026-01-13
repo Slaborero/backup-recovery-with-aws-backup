@@ -65,6 +65,8 @@ Parameters:
 Resources:
   rMemberAccountBackupKey:
     Type: AWS::KMS::Key
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Metadata:
       cfn_nag:
         rules_to_suppress:
@@ -158,6 +160,8 @@ Resources:
       TargetKeyId: !Ref rMemberAccountBackupKey
   rMemberAccountBackupVault:
     Type: AWS::Backup::BackupVault
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Properties:
       BackupVaultName: !Ref pMemberBackupVaultName
       EncryptionKeyArn: !GetAtt rMemberAccountBackupKey.Arn
