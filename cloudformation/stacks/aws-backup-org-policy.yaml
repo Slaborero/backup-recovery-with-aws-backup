@@ -193,7 +193,7 @@ Resources:
                       - client-data
                       - financial-data
                       - regulated-logs
-                      - autit-logs
+                      - audit-logs
                       - code-data
                       - app-object
                       - apps-logs
@@ -265,7 +265,7 @@ Resources:
                       - transactions-regulated
                       - financial-data
                       - backup-weekly
-                      - autit-logs
+                      - audit-logs
                       - code-data
                       - client-data
                       - core-data
@@ -406,7 +406,7 @@ Resources:
                       - backup-w-m
                       - core-data
                       - backup-monthly-3
-                      - autit-logs
+                      - audit-logs
       Tags:
       - Key: product
         Value: !Ref Product
