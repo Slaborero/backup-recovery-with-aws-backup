@@ -136,7 +136,6 @@ Resources:
         ReportTemplate: RESOURCE_COMPLIANCE_REPORT
         Regions:
         - "*"
-        OrganizationUnits: !Ref OrganizationUnits
       ReportPlanTags:
         - Key: product
           Value: !Ref Product
@@ -167,7 +166,6 @@ Resources:
         ReportTemplate: CONTROL_COMPLIANCE_REPORT
         Regions:
         - "*"
-        OrganizationUnits: !Ref OrganizationUnits
       ReportPlanTags:
         - Key: product
           Value: !Ref Product
@@ -198,7 +196,6 @@ Resources:
         ReportTemplate: BACKUP_JOB_REPORT
         Regions:
         - "*"
-        OrganizationUnits: !Ref OrganizationUnits
       ReportPlanTags:
         - Key: product
           Value: !Ref Product
@@ -229,7 +226,6 @@ Resources:
         ReportTemplate: COPY_JOB_REPORT
         Regions:
         - "*"
-        OrganizationUnits: !Ref OrganizationUnits
       ReportPlanTags:
         - Key: product
           Value: !Ref Product
@@ -260,7 +256,6 @@ Resources:
         ReportTemplate: RESTORE_JOB_REPORT
         Regions:
         - "*"
-        OrganizationUnits: !Ref OrganizationUnits
       ReportPlanTags:
         - Key: product
           Value: !Ref Product
