@@ -32,6 +32,11 @@ Parameters:
     Type: AWS::SSM::Parameter::Value<String>
     Default: "/backup/backupplan5"
 
+  ReportSchedule:
+    Description: 'CRON expression for report generation schedule (e.g., cron(0 12 * * ? *) for daily at 12:00 UTC / 09:00 ART)'
+    Type: String
+    Default: 'cron(0 12 * * ? *)'
+
   # Parameters for tagging
   CommitId:
     Description: The commit id for the change
@@ -132,6 +137,7 @@ Resources:
         - "CSV"
         S3BucketName: !Ref rReportBucket
         S3KeyPrefix: ResourceCompliance
+        ScheduleExpression: !Ref ReportSchedule
       ReportSetting:
         ReportTemplate: RESOURCE_COMPLIANCE_REPORT
         Regions:
@@ -162,6 +168,7 @@ Resources:
         - "CSV"
         S3BucketName: !Ref rReportBucket
         S3KeyPrefix: ControlCompliance
+        ScheduleExpression: !Ref ReportSchedule
       ReportSetting:
         ReportTemplate: CONTROL_COMPLIANCE_REPORT
         Regions:
@@ -192,6 +199,7 @@ Resources:
         - "CSV"
         S3BucketName: !Ref rReportBucket
         S3KeyPrefix: BackupJob
+        ScheduleExpression: !Ref ReportSchedule
       ReportSetting:
         ReportTemplate: BACKUP_JOB_REPORT
         Regions:
@@ -222,6 +230,7 @@ Resources:
         - "CSV"
         S3BucketName: !Ref rReportBucket
         S3KeyPrefix: CopyJob
+        ScheduleExpression: !Ref ReportSchedule
       ReportSetting:
         ReportTemplate: COPY_JOB_REPORT
         Regions:
@@ -252,6 +261,7 @@ Resources:
         - "CSV"
         S3BucketName: !Ref rReportBucket
         S3KeyPrefix: RestoreJob
+        ScheduleExpression: !Ref ReportSchedule
       ReportSetting:
         ReportTemplate: RESTORE_JOB_REPORT
         Regions:
