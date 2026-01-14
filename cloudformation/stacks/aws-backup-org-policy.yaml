@@ -539,19 +539,27 @@ Resources:
               regions:
                 "@@append": !Ref pRegions
               selections:
-                resource_types:
-                  OrgDefaultDailyBackupSelection:
+                resources:
+                  OrgDefaultDailyResourceSelection:
                     iam_role_arn:
                       "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
                     resource_types:
                       "@@assign":
-                      - 'EBS'
-                      - 'EC2'
-                      - 'RDS'
-                      - 'DynamoDB'
-                      - 'EFS'
-                      - 'FSx'
-                      - 'S3'
+                      - "arn:aws:ec2:*:*:instance/*"
+                      - "arn:aws:ec2:*:*:volume/*"
+                      - "arn:aws:rds:*:*:db:*"
+                      - "arn:aws:rds:*:*:cluster:*"
+                      - "arn:aws:dynamodb:*:*:table/*"
+                      - "arn:aws:elasticfilesystem:*:*:file-system/*"
+                      - "arn:aws:fsx:*:*:file-system/*"
+                      - "arn:aws:storagegateway:*:*:gateway/*"
+                    conditions:
+                      string_not_like:
+                        exclude_tagged_resources:
+                          condition_key:
+                            "@@assign": "aws:ResourceTag/data-type-bkp"
+                          condition_value:
+                            "@@assign": "*"
       Tags:
       - Key: product
         Value: !Ref Product
@@ -608,19 +616,27 @@ Resources:
               regions:
                 "@@append": !Ref pRegions
               selections:
-                resource_types:
-                  OrgDefaultWeeklyBackupSelection:
+                resources:
+                  OrgDefaultWeeklyResourceSelection:
                     iam_role_arn:
                       "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
                     resource_types:
                       "@@assign":
-                      - 'EBS'
-                      - 'EC2'
-                      - 'RDS'
-                      - 'DynamoDB'
-                      - 'EFS'
-                      - 'FSx'
-                      - 'S3'
+                      - "arn:aws:ec2:*:*:instance/*"
+                      - "arn:aws:ec2:*:*:volume/*"
+                      - "arn:aws:rds:*:*:db:*"
+                      - "arn:aws:rds:*:*:cluster:*"
+                      - "arn:aws:dynamodb:*:*:table/*"
+                      - "arn:aws:elasticfilesystem:*:*:file-system/*"
+                      - "arn:aws:fsx:*:*:file-system/*"
+                      - "arn:aws:storagegateway:*:*:gateway/*"
+                    conditions:
+                      string_not_like:
+                        exclude_tagged_resources:
+                          condition_key:
+                            "@@assign": "aws:ResourceTag/data-type-bkp"
+                          condition_value:
+                            "@@assign": "*"
       Tags:
       - Key: product
         Value: !Ref Product
