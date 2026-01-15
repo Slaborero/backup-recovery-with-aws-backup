@@ -1269,6 +1269,7 @@ Resources:
             Repo: !Ref GitHubRepo # The name of the forked repository
             Branch: !Ref GitHubBranch # The branch you want to track in the forked repo
             OAuthToken: !Ref GitHubPersonalAccessToken
+            PollForSourceChanges: false # Disable polling, use webhook only
           OutputArtifacts:
           - Name: SourceArtifacts
           Namespace: SourceVariables
