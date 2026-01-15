@@ -546,13 +546,13 @@ Resources:
                     resource_types:
                       "@@assign":
                       - "arn:aws:ec2:*:*:instance/*"
-                      - "arn:aws:ec2:*:*:volume/*"
                       - "arn:aws:rds:*:*:db:*"
                       - "arn:aws:rds:*:*:cluster:*"
                       - "arn:aws:dynamodb:*:*:table/*"
                       - "arn:aws:elasticfilesystem:*:*:file-system/*"
                       - "arn:aws:fsx:*:*:file-system/*"
                       - "arn:aws:storagegateway:*:*:gateway/*"
+                      - "arn:aws:s3:::*"
                     conditions:
                       string_not_like:
                         exclude_tagged_resources:
@@ -623,13 +623,13 @@ Resources:
                     resource_types:
                       "@@assign":
                       - "arn:aws:ec2:*:*:instance/*"
-                      - "arn:aws:ec2:*:*:volume/*"
                       - "arn:aws:rds:*:*:db:*"
                       - "arn:aws:rds:*:*:cluster:*"
                       - "arn:aws:dynamodb:*:*:table/*"
                       - "arn:aws:elasticfilesystem:*:*:file-system/*"
                       - "arn:aws:fsx:*:*:file-system/*"
                       - "arn:aws:storagegateway:*:*:gateway/*"
+                      - "arn:aws:s3:::*"
                     conditions:
                       string_not_like:
                         exclude_tagged_resources:
