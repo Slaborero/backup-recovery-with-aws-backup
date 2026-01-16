@@ -134,6 +134,8 @@ Resources:
         S3KeyPrefix: ResourceCompliance
       ReportSetting:
         ReportTemplate: RESOURCE_COMPLIANCE_REPORT
+        Accounts:
+        - "ROOT"
         Regions:
         - "*"
       ReportPlanTags:
@@ -164,6 +166,8 @@ Resources:
         S3KeyPrefix: ControlCompliance
       ReportSetting:
         ReportTemplate: CONTROL_COMPLIANCE_REPORT
+        Accounts:
+        - "ROOT"
         Regions:
         - "*"
       ReportPlanTags:
@@ -194,6 +198,8 @@ Resources:
         S3KeyPrefix: BackupJob
       ReportSetting:
         ReportTemplate: BACKUP_JOB_REPORT
+        Accounts:
+        - "ROOT"
         Regions:
         - "*"
       ReportPlanTags:
@@ -224,6 +230,8 @@ Resources:
         S3KeyPrefix: CopyJob
       ReportSetting:
         ReportTemplate: COPY_JOB_REPORT
+        Accounts:
+        - "ROOT"
         Regions:
         - "*"
       ReportPlanTags:
@@ -254,6 +262,8 @@ Resources:
         S3KeyPrefix: RestoreJob
       ReportSetting:
         ReportTemplate: RESTORE_JOB_REPORT
+        Accounts:
+        - "ROOT"
         Regions:
         - "*"
       ReportPlanTags:
