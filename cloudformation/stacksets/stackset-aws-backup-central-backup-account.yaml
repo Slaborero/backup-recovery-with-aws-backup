@@ -27,7 +27,7 @@ Parameters:
     Default: "/backup/central-account-id"
   StackSetCentralBackupAccountRegionParameterStore:
     Description: Central backup and restore account region
-    Type: AWS::SSM::Parameter::Value<String>
+    Type: AWS::SSM::Parameter::Value<CommaDelimitedList>
     Default: "/backup/central-account-region"
 
   # Parameters for stack
