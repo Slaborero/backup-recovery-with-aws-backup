@@ -109,8 +109,7 @@ Resources:
               - !Ref StackSetCentralAccountOUParameterStore
           #          ParameterOverrides:
           #            - Parameter
-          Regions:
-            - !Ref StackSetCentralBackupAccountRegionParameterStore
+          Regions: !Ref StackSetCentralBackupAccountRegionParameterStore
       Parameters:
         -
           ParameterKey: pOrganizationId
