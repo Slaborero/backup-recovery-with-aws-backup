@@ -547,7 +547,7 @@ Resources:
     Type: AWS::SSM::Parameter
     Properties:
       Description: "The region for the central account that will be the secondary store for all AWS Backups.  Secondary copies and restore testing will be in this region."
-      Name: "/backup/central-account-region"
+      Name: "/backup/central-account-region-v2"
       Type: StringList
       Value: !Ref AWSBackupCentralAccountRegion
       Tags:

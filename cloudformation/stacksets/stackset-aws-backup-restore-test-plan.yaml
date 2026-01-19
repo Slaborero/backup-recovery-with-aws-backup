@@ -32,8 +32,8 @@ Parameters:
 
   StackSetCentralBackupAccountRegionParameterStore:
     Description: Central backup and restore account region
-    Type: AWS::SSM::Parameter::Value<String>
-    Default: "/backup/central-account-region"
+    Type: AWS::SSM::Parameter::Value<CommaDelimitedList>
+    Default: "/backup/central-account-region-v2"
 
   # Parameters for stack
   RestoreTestSchedule:
