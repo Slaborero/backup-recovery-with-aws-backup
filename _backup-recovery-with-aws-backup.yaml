@@ -565,7 +565,9 @@ Resources:
       Description: "The ARN for the Central Backup Vault that will be the secondary store for all AWS Backups."
       Name: "/backup/central-vault-arn"
       Type: String
-      Value: !Sub "arn:aws:backup:${AWSBackupCentralAccountRegion}:${AWSBackupCentralAccountId}:backup-vault:AWSBackupSolutionCentralVault"
+      Value: !Sub 
+        - "arn:aws:backup:${PrimaryRegion}:${AWSBackupCentralAccountId}:backup-vault:AWSBackupSolutionCentralVault"
+        - PrimaryRegion: !Select [0, !Split [",", !Ref AWSBackupCentralAccountRegion]]
       Tags:
         product: !Ref Product
         squad-name: !Ref SquadName
