@@ -166,6 +166,11 @@ Resources:
                       "@@assign": '7'
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
+                  copy_actions:
+                    "arn:aws:backup:us-east-2:557270420251:backup-vault:AWSBackupSolutionCentralVault":
+                      lifecycle:
+                        delete_after_days:
+                          "@@assign": '7'
                   recovery_point_tags:
                     project:
                       tag_key:
