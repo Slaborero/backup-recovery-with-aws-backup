@@ -167,7 +167,9 @@ Resources:
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   copy_actions:
-                    "arn:aws:backup:us-east-2:557270420251:backup-vault:AWSBackupSolutionCentralVault":
+                    arn:aws:backup:us-east-1:557270420251:backup-vault:AWSBackupSolutionCentralVault:
+                      target_backup_vault_arn:
+                        "@@assign": !Ref pCentralBackupVaultArn
                       lifecycle:
                         delete_after_days:
                           "@@assign": '7'
