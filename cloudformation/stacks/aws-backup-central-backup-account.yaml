@@ -57,6 +57,8 @@ Parameters:
 Resources:
   rCentralAccountBackupKey:
     Type: AWS::KMS::Key
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Metadata:
       cfn_nag:
         rules_to_suppress:
@@ -129,12 +131,16 @@ Resources:
 
   rCentralAccountBackupKeyAlias:
     Type: AWS::KMS::Alias
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Properties:
       AliasName: !Sub alias/${pBackupKeyAlias}
       TargetKeyId: !Ref rCentralAccountBackupKey
 
   rCentralBackupVault:
     Type: AWS::Backup::BackupVault
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Properties:
       BackupVaultName: !Ref pCentralBackupVaultName
       EncryptionKeyArn: !GetAtt rCentralAccountBackupKey.Arn
