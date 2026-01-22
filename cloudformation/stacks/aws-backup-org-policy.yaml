@@ -94,12 +94,8 @@ Parameters:
     Default: 'monthly-10y'
   pTagKey:
     Type: String
-    Description: This is the tag key to assign to resources.
-    Default: 'project'
-  pTagValue:
-    Type: String
-    Description: This is the tag value to assign to resources.
-    Default: 'aws-backup'
+    Description: This is the tag key to assign to backup plans and recovery points.
+    Default: 'bkp-plan'
 
   # Parameters for tagging
   CommitId:
@@ -174,17 +170,17 @@ Resources:
                         delete_after_days:
                           "@@assign": '7'
                   recovery_point_tags:
-                    project:
+                    bkp-plan:
                       tag_key:
                         "@@assign": !Ref pTagKey
                       tag_value:
-                        "@@assign": !Ref pTagValue
+                        "@@assign": "OrgBackupPlanDaily"
               backup_plan_tags:
-                project:
+                bkp-plan:
                   tag_key:
                     "@@assign": !Ref pTagKey
                   tag_value:
-                    "@@assign": !Ref pTagValue
+                    "@@assign": "OrgBackupPlanDaily"
               regions:
                 "@@append": !Ref pRegions
               selections:
@@ -246,17 +242,17 @@ Resources:
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   recovery_point_tags:
-                    project:
+                    bkp-plan:
                       tag_key:
                         "@@assign": !Ref pTagKey
                       tag_value:
-                        "@@assign": !Ref pTagValue
+                        "@@assign": "OrgBackupPlanWeekly"
               backup_plan_tags:
-                project:
+                bkp-plan:
                   tag_key:
                     "@@assign": !Ref pTagKey
                   tag_value:
-                    "@@assign": !Ref pTagValue
+                    "@@assign": "OrgBackupPlanWeekly"
               regions:
                 "@@append": !Ref pRegions
               selections:
@@ -322,17 +318,17 @@ Resources:
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   recovery_point_tags:
-                    project:
+                    bkp-plan:
                       tag_key:
                         "@@assign": !Ref pTagKey
                       tag_value:
-                        "@@assign": !Ref pTagValue
+                        "@@assign": "OrgBackupPlanMonthly"
               backup_plan_tags:
-                project:
+                bkp-plan:
                   tag_key:
                     "@@assign": !Ref pTagKey
                   tag_value:
-                    "@@assign": !Ref pTagValue
+                    "@@assign": "OrgBackupPlanMonthly"
               regions:
                 "@@append": !Ref pRegions
               selections:
@@ -388,17 +384,17 @@ Resources:
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   recovery_point_tags:
-                    project:
+                    bkp-plan:
                       tag_key:
                         "@@assign": !Ref pTagKey
                       tag_value:
-                        "@@assign": !Ref pTagValue
+                        "@@assign": "OrgBackupPlanMonthly3m"
               backup_plan_tags:
-                project:
+                bkp-plan:
                   tag_key:
                     "@@assign": !Ref pTagKey
                   tag_value:
-                    "@@assign": !Ref pTagValue
+                    "@@assign": "OrgBackupPlanMonthly3m"
               regions:
                 "@@append": !Ref pRegions
               selections:
@@ -456,11 +452,11 @@ Resources:
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   recovery_point_tags:
-                    project:
+                    bkp-plan:
                       tag_key:
                         "@@assign": !Ref pTagKey
                       tag_value:
-                        "@@assign": !Ref pTagValue
+                        "@@assign": "OrgBackupPlanMonthly10y"
                   copy_actions:
                     arn:aws:backup:us-east-1:557270420251:backup-vault:AWSBackupSolutionCentralVault:
                       target_backup_vault_arn:
@@ -471,11 +467,11 @@ Resources:
                         move_to_cold_storage_after_days:
                           "@@assign": '90'
               backup_plan_tags:
-                project:
+                bkp-plan:
                   tag_key:
                     "@@assign": !Ref pTagKey
                   tag_value:
-                    "@@assign": !Ref pTagValue
+                    "@@assign": "OrgBackupPlanMonthly10y"
               regions:
                 "@@append": !Ref pRegions
               selections:
@@ -532,17 +528,17 @@ Resources:
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   recovery_point_tags:
-                    project:
+                    bkp-plan:
                       tag_key:
                         "@@assign": !Ref pTagKey
                       tag_value:
-                        "@@assign": !Ref pTagValue
+                        "@@assign": "OrgBackupPlanDefaultDaily"
               backup_plan_tags:
-                project:
+                bkp-plan:
                   tag_key:
                     "@@assign": !Ref pTagKey
                   tag_value:
-                    "@@assign": !Ref pTagValue
+                    "@@assign": "OrgBackupPlanDefaultDaily"
               regions:
                 "@@append": !Ref pRegions
               selections:
@@ -609,17 +605,17 @@ Resources:
                   target_backup_vault_name:
                     "@@assign": !Ref pMemberAccountBackupVault
                   recovery_point_tags:
-                    project:
+                    bkp-plan:
                       tag_key:
                         "@@assign": !Ref pTagKey
                       tag_value:
-                        "@@assign": !Ref pTagValue
+                        "@@assign": "OrgBackupPlanDefaultWeekly"
               backup_plan_tags:
-                project:
+                bkp-plan:
                   tag_key:
                     "@@assign": !Ref pTagKey
                   tag_value:
-                    "@@assign": !Ref pTagValue
+                    "@@assign": "OrgBackupPlanDefaultWeekly"
               regions:
                 "@@append": !Ref pRegions
               selections:
