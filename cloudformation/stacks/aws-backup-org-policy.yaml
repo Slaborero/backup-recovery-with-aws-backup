@@ -28,13 +28,11 @@ Parameters:
     Type: String
     Default: AWSBackupSolutionRole
   DailyBackupSchedule:
-    Description: The CRON job to initiate backup jobs. For example, cron(0 5 ? * *
-      *) for daily, every day at 05:00 UTC.
+    Description: The CRON job to initiate daily backup jobs. Runs Monday to Saturday on days 2-31 at 05:00 UTC (excludes day 1 and Sundays to avoid overlap with monthly and weekly backups).
     Type: String
-    Default: cron(0 5 ? * * *)
+    Default: cron(0 5 2-31 * MON-SAT *)
   MonthlyBackupSchedule:
-    Description: The CRON job to initiate backup jobs. For example, cron(0 5 1 * ?
-      *) for monthly, first day of month at midnight UTC.
+    Description: The CRON job to initiate monthly backup jobs. Runs on day 1 of each month at 05:00 UTC.
     Type: String
     Default: cron(0 5 1 * ? *)
   pMemberAccountBackupVault:
@@ -73,9 +71,9 @@ Parameters:
       plan across the member accounts.
     Default: 'weekly'
   WeeklyBackupSchedule:
-    Description: The CRON job to initiate backup jobs. For example, cron(0 5 ? * 1 *) for weekly, every Sunday at 05:00 UTC.
+    Description: The CRON job to initiate weekly backup jobs. Runs every Sunday on days 2-31 at 05:00 UTC (excludes day 1 to avoid overlap with monthly backups).
     Type: String
-    Default: cron(0 5 ? * 1 *)
+    Default: cron(0 5 2-31 * SUN *)
   pBackupTagKey4:
     Type: String
     Description: The backup tag key for monthly 3 months backup
