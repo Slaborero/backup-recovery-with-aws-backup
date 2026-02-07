@@ -500,156 +500,160 @@ Resources:
       - Key: ApplicationOwner
         Value: !Ref ApplicationOwner
 
-  rOrgDefaultDailyBackUpPolicy:
-    Type: AWS::Organizations::Policy
-    Properties:
-      Name: default-daily
-      Description: >-
-        BackupPolicy for Daily Backup (safety net for all resources by type)
-      Type: BACKUP_POLICY
-      TargetIds: !Ref pOrgBackupTargetOUs
-      Content:
-        Fn::ToJsonString:
-          plans:
-            OrgBackupPlanDefaultDaily:
-              rules:
-                OrgDefaultDailyBackupRule:
-                  schedule_expression:
-                    "@@assign": !Ref DailyBackupSchedule
-                  start_backup_window_minutes:
-                    "@@assign": '60'
-                  complete_backup_window_minutes:
-                    "@@assign": '1200'
-                  lifecycle:
-                    delete_after_days:
-                      "@@assign": '7'
-                  target_backup_vault_name:
-                    "@@assign": !Ref pMemberAccountBackupVault
-                  recovery_point_tags:
-                    bkp-plan:
-                      tag_key:
-                        "@@assign": !Ref pTagKey
-                      tag_value:
-                        "@@assign": "OrgBackupPlanDefaultDaily"
-              backup_plan_tags:
-                bkp-plan:
-                  tag_key:
-                    "@@assign": !Ref pTagKey
-                  tag_value:
-                    "@@assign": "OrgBackupPlanDefaultDaily"
-              regions:
-                "@@append": !Ref pRegions
-              selections:
-                resources:
-                  OrgDefaultDailyResourceSelection:
-                    iam_role_arn:
-                      "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
-                    resource_types:
-                      "@@assign":
-                      - "arn:aws:ec2:*:*:instance/*"
-                      - "arn:aws:rds:*:*:db:*"
-                      - "arn:aws:rds:*:*:cluster:*"
-                      - "arn:aws:dynamodb:*:*:table/*"
-                      - "arn:aws:elasticfilesystem:*:*:file-system/*"
-                      - "arn:aws:fsx:*:*:file-system/*"
-                      - "arn:aws:storagegateway:*:*:gateway/*"
-                      - "arn:aws:s3:::*"
-                    conditions:
-                      string_not_like:
-                        exclude_tagged_resources:
-                          condition_key:
-                            "@@assign": "aws:ResourceTag/data-type-bkp"
-                          condition_value:
-                            "@@assign": "*"
-      Tags:
-      - Key: product
-        Value: !Ref Product
-      # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
-      # CloudFormation lacks permissions to update existing policies, causing deployment failures
-      # - Key: CommitId
-        #   Value: !Ref CommitId
-      - Key: squad-name
-        Value: !Ref SquadName
-      - Key: CostCenter
-        Value: !Ref CostCenter
-      - Key: env
-        Value: !Ref env
-      - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+  # COMMENTED FOR COST REDUCTION IN TEST ENVIRONMENT - Safety net policy disabled
+  # Only resources with explicit data-type-bkp tags will be backed up
+  # rOrgDefaultDailyBackUpPolicy:
+  #   Type: AWS::Organizations::Policy
+  #   Properties:
+  #     Name: default-daily
+  #     Description: >-
+  #       BackupPolicy for Daily Backup (safety net for all resources by type)
+  #     Type: BACKUP_POLICY
+  #     TargetIds: !Ref pOrgBackupTargetOUs
+  #     Content:
+  #       Fn::ToJsonString:
+  #         plans:
+  #           OrgBackupPlanDefaultDaily:
+  #             rules:
+  #               OrgDefaultDailyBackupRule:
+  #                 schedule_expression:
+  #                   "@@assign": !Ref DailyBackupSchedule
+  #                 start_backup_window_minutes:
+  #                   "@@assign": '60'
+  #                 complete_backup_window_minutes:
+  #                   "@@assign": '1200'
+  #                 lifecycle:
+  #                   delete_after_days:
+  #                     "@@assign": '7'
+  #                 target_backup_vault_name:
+  #                   "@@assign": !Ref pMemberAccountBackupVault
+  #                 recovery_point_tags:
+  #                   bkp-plan:
+  #                     tag_key:
+  #                       "@@assign": !Ref pTagKey
+  #                     tag_value:
+  #                       "@@assign": "OrgBackupPlanDefaultDaily"
+  #             backup_plan_tags:
+  #               bkp-plan:
+  #                 tag_key:
+  #                   "@@assign": !Ref pTagKey
+  #                 tag_value:
+  #                   "@@assign": "OrgBackupPlanDefaultDaily"
+  #             regions:
+  #               "@@append": !Ref pRegions
+  #             selections:
+  #               resources:
+  #                 OrgDefaultDailyResourceSelection:
+  #                   iam_role_arn:
+  #                     "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
+  #                   resource_types:
+  #                     "@@assign":
+  #                     - "arn:aws:ec2:*:*:instance/*"
+  #                     - "arn:aws:rds:*:*:db:*"
+  #                     - "arn:aws:rds:*:*:cluster:*"
+  #                     - "arn:aws:dynamodb:*:*:table/*"
+  #                     - "arn:aws:elasticfilesystem:*:*:file-system/*"
+  #                     - "arn:aws:fsx:*:*:file-system/*"
+  #                     - "arn:aws:storagegateway:*:*:gateway/*"
+  #                     - "arn:aws:s3:::*"
+  #                   conditions:
+  #                     string_not_like:
+  #                       exclude_tagged_resources:
+  #                         condition_key:
+  #                           "@@assign": "aws:ResourceTag/data-type-bkp"
+  #                         condition_value:
+  #                           "@@assign": "*"
+  #     Tags:
+  #     - Key: product
+  #       Value: !Ref Product
+  #     # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
+  #     # CloudFormation lacks permissions to update existing policies, causing deployment failures
+  #     # - Key: CommitId
+  #       #   Value: !Ref CommitId
+  #     - Key: squad-name
+  #       Value: !Ref SquadName
+  #     - Key: CostCenter
+  #       Value: !Ref CostCenter
+  #     - Key: env
+  #       Value: !Ref env
+  #     - Key: ApplicationOwner
+  #       Value: !Ref ApplicationOwner
 
-  rOrgDefaultWeeklyBackUpPolicy:
-    Type: AWS::Organizations::Policy
-    Properties:
-      Name: default-weekly
-      Description: >-
-        BackupPolicy for Weekly Backup (safety net for all resources by type)
-      Type: BACKUP_POLICY
-      TargetIds: !Ref pOrgBackupTargetOUs
-      Content:
-        Fn::ToJsonString:
-          plans:
-            OrgBackupPlanDefaultWeekly:
-              rules:
-                OrgDefaultWeeklyBackupRule:
-                  schedule_expression:
-                    "@@assign": !Ref WeeklyBackupSchedule
-                  start_backup_window_minutes:
-                    "@@assign": '60'
-                  complete_backup_window_minutes:
-                    "@@assign": '1200'
-                  lifecycle:
-                    delete_after_days:
-                      "@@assign": '30'
-                  target_backup_vault_name:
-                    "@@assign": !Ref pMemberAccountBackupVault
-                  recovery_point_tags:
-                    bkp-plan:
-                      tag_key:
-                        "@@assign": !Ref pTagKey
-                      tag_value:
-                        "@@assign": "OrgBackupPlanDefaultWeekly"
-              backup_plan_tags:
-                bkp-plan:
-                  tag_key:
-                    "@@assign": !Ref pTagKey
-                  tag_value:
-                    "@@assign": "OrgBackupPlanDefaultWeekly"
-              regions:
-                "@@append": !Ref pRegions
-              selections:
-                resources:
-                  OrgDefaultWeeklyResourceSelection:
-                    iam_role_arn:
-                      "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
-                    resource_types:
-                      "@@assign":
-                      - "arn:aws:ec2:*:*:instance/*"
-                      - "arn:aws:rds:*:*:db:*"
-                      - "arn:aws:rds:*:*:cluster:*"
-                      - "arn:aws:dynamodb:*:*:table/*"
-                      - "arn:aws:elasticfilesystem:*:*:file-system/*"
-                      - "arn:aws:fsx:*:*:file-system/*"
-                      - "arn:aws:storagegateway:*:*:gateway/*"
-                      - "arn:aws:s3:::*"
-                    conditions:
-                      string_not_like:
-                        exclude_tagged_resources:
-                          condition_key:
-                            "@@assign": "aws:ResourceTag/data-type-bkp"
-                          condition_value:
-                            "@@assign": "*"
-      Tags:
-      - Key: product
-        Value: !Ref Product
-      # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
-      # CloudFormation lacks permissions to update existing policies, causing deployment failures
-      # - Key: CommitId
-        #   Value: !Ref CommitId
-      - Key: squad-name
-        Value: !Ref SquadName
-      - Key: CostCenter
-        Value: !Ref CostCenter
-      - Key: env
-        Value: !Ref env
-      - Key: ApplicationOwner
-        Value: !Ref ApplicationOwner
+  # COMMENTED FOR COST REDUCTION IN TEST ENVIRONMENT - Safety net policy disabled
+  # Only resources with explicit data-type-bkp tags will be backed up
+  # rOrgDefaultWeeklyBackUpPolicy:
+  #   Type: AWS::Organizations::Policy
+  #   Properties:
+  #     Name: default-weekly
+  #     Description: >-
+  #       BackupPolicy for Weekly Backup (safety net for all resources by type)
+  #     Type: BACKUP_POLICY
+  #     TargetIds: !Ref pOrgBackupTargetOUs
+  #     Content:
+  #       Fn::ToJsonString:
+  #         plans:
+  #           OrgBackupPlanDefaultWeekly:
+  #             rules:
+  #               OrgDefaultWeeklyBackupRule:
+  #                 schedule_expression:
+  #                   "@@assign": !Ref WeeklyBackupSchedule
+  #                 start_backup_window_minutes:
+  #                   "@@assign": '60'
+  #                 complete_backup_window_minutes:
+  #                   "@@assign": '1200'
+  #                 lifecycle:
+  #                   delete_after_days:
+  #                     "@@assign": '30'
+  #                 target_backup_vault_name:
+  #                   "@@assign": !Ref pMemberAccountBackupVault
+  #                 recovery_point_tags:
+  #                   bkp-plan:
+  #                     tag_key:
+  #                       "@@assign": !Ref pTagKey
+  #                     tag_value:
+  #                       "@@assign": "OrgBackupPlanDefaultWeekly"
+  #             backup_plan_tags:
+  #               bkp-plan:
+  #                 tag_key:
+  #                   "@@assign": !Ref pTagKey
+  #                 tag_value:
+  #                   "@@assign": "OrgBackupPlanDefaultWeekly"
+  #             regions:
+  #               "@@append": !Ref pRegions
+  #             selections:
+  #               resources:
+  #                 OrgDefaultWeeklyResourceSelection:
+  #                   iam_role_arn:
+  #                     "@@assign": !Sub "arn:aws:iam::$account:role/${pCrossAccountBackupRole}"
+  #                   resource_types:
+  #                     "@@assign":
+  #                     - "arn:aws:ec2:*:*:instance/*"
+  #                     - "arn:aws:rds:*:*:db:*"
+  #                     - "arn:aws:rds:*:*:cluster:*"
+  #                     - "arn:aws:dynamodb:*:*:table/*"
+  #                     - "arn:aws:elasticfilesystem:*:*:file-system/*"
+  #                     - "arn:aws:fsx:*:*:file-system/*"
+  #                     - "arn:aws:storagegateway:*:*:gateway/*"
+  #                     - "arn:aws:s3:::*"
+  #                   conditions:
+  #                     string_not_like:
+  #                       exclude_tagged_resources:
+  #                         condition_key:
+  #                           "@@assign": "aws:ResourceTag/data-type-bkp"
+  #                         condition_value:
+  #                           "@@assign": "*"
+  #     Tags:
+  #     - Key: product
+  #       Value: !Ref Product
+  #     # CommitId tag removed: Causes unnecessary policy updates on every pipeline run
+  #     # CloudFormation lacks permissions to update existing policies, causing deployment failures
+  #     # - Key: CommitId
+  #       #   Value: !Ref CommitId
+  #     - Key: squad-name
+  #       Value: !Ref SquadName
+  #     - Key: CostCenter
+  #       Value: !Ref CostCenter
+  #     - Key: env
+  #       Value: !Ref env
+  #     - Key: ApplicationOwner
+  #       Value: !Ref ApplicationOwner
